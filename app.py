@@ -20,7 +20,6 @@ section = st.sidebar.radio("Go to:", [
     "Course Tutors",
     "Courses"
 ])
-
 # Content Ideas Section
 if section == "Content Ideas":
     st.header("Content Ideas")
@@ -79,10 +78,20 @@ elif section == "Content Calendar":
     calendar_df = pd.DataFrame({"Date": dates[:len(tasks)], "Task": tasks, "Type": task_types})
     st.dataframe(calendar_df, use_container_width=True)
 
-# Viral Strategies Section
+# Section: Viral Strategies
 elif section == "Viral Strategies":
     st.header("Viral Strategies")
-    st.write("Explore strategies to make your content go viral.")
+    st.write("Explore strategies to make your content go viral and maximize reach.")
+    st.subheader("1. Utilize Hashtags Effectively")
+    st.write("Research trending hashtags related to your industry or content theme. Use a mix of popular and niche hashtags to increase visibility and engagement.")
+    st.subheader("2. Collaborate with Micro-Influencers")
+    st.write("Partner with micro-influencers who have a highly engaged audience. Offering them exclusive freemium content can create buzz and increase your brand's reach.")
+    st.subheader("3. Run Contests or Giveaways")
+    st.write("Organize contests where followers share your content or tag friends. This encourages engagement and spreads your content organically.")
+    st.subheader("4. Create Interactive Content")
+    st.write("Use polls, quizzes, and Q&A sessions on platforms like Instagram Stories and LinkedIn. Interactive content boosts visibility and engagement.")
+    st.subheader("5. Leverage Email Marketing")
+    st.write("Send engaging email updates to your subscribers about your latest content. Encourage them to share it, and include a clear call to action.")
 
 # SEO Strategy Section
 elif section == "SEO Strategy":
