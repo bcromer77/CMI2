@@ -157,29 +157,6 @@ elif section == "Content Calendar":
     })
     st.dataframe(calendar_df, use_container_width=True)
 
-# Course Tutors Section
-elif section == "Course Tutors":
-    st.header("Meet Our Expert Tutors")
-    st.write("Learn from world-class experts who bring years of experience in marketing, storytelling, and public speaking.")
-    st.markdown("---")
-
-    # Tutor Profiles
-    tutor_profiles = [
-        {
-            "Name": "Kay Munday", 
-            "Specialization": "Building Confidence", 
-            "Bio": ("Kay Munday is an international speaker and coach dedicated to eradicating labels through storytelling. "
-                    "She speaks on Women’s Empowerment, DEI, and Mental Health, drawing from her personal journey of overcoming "
-                    "dyslexia and anxiety. As Google's go-to speaking coach, she transforms professionals into confident communicators.")
-        },
-        {"Name": "Dr. James McCabe", "Specialization": "Storytelling Narrative", "Bio": "Ph.D. in Communications, specializing in strategic storytelling."},
-        {"Name": "Brian Jenner", "Specialization": "Rhetoric", "Bio": "Author and public speaking expert focused on the art of persuasion."}
-    ]
-    for tutor in tutor_profiles:
-        with st.expander(f"👤 {tutor['Name']}"):
-            st.write(f"**Specialization**: {tutor['Specialization']}")
-            st.write(f"**Bio**: {tutor['Bio']}")
-
 # Courses Section
 elif section == "Courses":
     st.header("Explore Our Courses")
@@ -189,4 +166,10 @@ elif section == "Courses":
     # Course Offerings
     courses = [
         {"Title": "Reputation - RippleXp", "Description": "Top-of-funnel course for managing brand reputation through storytelling."},
-        {"Title": "Influencer Marketing Masterclass", "Description": "Advanced strategies for building long-term
+        {"Title": "Influencer Marketing Masterclass", "Description": "Advanced strategies for building long-term relationships and measuring ROI."}
+    ]
+    
+    # Loop to display course information
+    for course in courses:
+        with st.expander(f"📘 {course['Title']}"):
+            st.write(course["Description"])
