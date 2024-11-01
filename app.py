@@ -21,17 +21,20 @@ section = st.sidebar.radio("Go to:", [
     "Courses"
 ])
 
-# Content Ideas Section (Previous content ideas here)
+# Content Ideas Section
 if section == "Content Ideas":
-    # Add your Content Ideas code here...
+    st.header("Content Ideas")
+    st.write("Add your Content Ideas code or features here.")
 
-# Premium Content Section (Previous premium content here)
+# Premium Content Section
 elif section == "Premium Content":
-    # Add your Premium Content code here...
+    st.header("Premium Content")
+    st.write("Add your Premium Content code or features here.")
 
-# Content Calendar Section (Previous calendar content here)
+# Content Calendar Section
 elif section == "Content Calendar":
-    # Add your Content Calendar code here...
+    st.header("Content Calendar")
+    st.write("Add your Content Calendar code or features here.")
 
 # Viral Strategies Section
 elif section == "Viral Strategies":
@@ -205,6 +208,5 @@ elif section == "Courses":
 
     # Footer CTA
     st.write("---")
-    st.write("Ready to secure your brand’s reputation? Start your RippleXp journey and prepare for RippleXn’s comprehensive monitoring services.")
-    st.button("Contact Us for a Free Consultation")
+    st.write("Ready
 
