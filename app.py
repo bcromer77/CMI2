@@ -1,3 +1,8 @@
+import streamlit as st  # Ensure Streamlit is imported at the start
+import pandas as pd
+from datetime import datetime, timedelta
+
+# Simulated data for content ideas with pricing
 def load_data():
     data = pd.DataFrame({
         "Index": range(1, 16),
@@ -51,7 +56,7 @@ def load_data():
             "International Regulations, FTC Guidelines",
             "Sustaining Influencer Partnerships"
         ],
-        "Delivery Format": [  # Ensure this column name matches exactly
+        "Delivery Format": [
             # Delivery Formats
             "Infographic (Canva Design)", "Interactive Checklist (PDF)", "Guide (PDF)",
             "Blog Post (Quick Read)", "Template (Downloadable PDF)",
@@ -81,7 +86,7 @@ def load_data():
     )
     return data
 
-# Load the simulated data
+# Load the simulated data into session state
 if "content_data" not in st.session_state:
     st.session_state["content_data"] = load_data()
 
@@ -180,3 +185,7 @@ elif section == "Courses":
     st.header("Explore Our Courses")
     st.write("Our courses are designed to take you from foundational concepts to advanced influencer marketing strategies.")
     st.markdown("---")
+
+    # Course Offerings
+    courses = [
+        {"Title": "Reputation - RippleXp", "Description": "Top-of-funnel course for managing
