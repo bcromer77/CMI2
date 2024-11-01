@@ -139,8 +139,11 @@ if section == "Content Calendar":
     dates = [start_date + pd.Timedelta(days=i) for i in range(30)]
     calendar_tasks = [""] * 30
     calendar_df = pd.DataFrame({"Date": dates, "Task": calendar_tasks})
-    calendar_df = st.experimental_data_editor(calendar_df, use_container_width=True)
-    st.write("Update your daily tasks directly in the table.")
+    
+    # Display the content calendar using a simple dataframe
+    st.dataframe(calendar_df, use_container_width=True)
+    st.write("Note: You can update the tasks manually in your personal copy.")
+
 
 # Viral Strategies Section
 if section == "Viral Strategies":
