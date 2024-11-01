@@ -13,7 +13,7 @@ section = st.sidebar.radio("Go to:", [
     "Content Ideas",
     "Premium Content",
     "Content Calendar",
-    "Viral Strategies",
+    "Viral Strategy",
     "SEO Strategy",
     "Notes & To-Do",
     "Links & Resources",
