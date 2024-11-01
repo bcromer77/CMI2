@@ -13,7 +13,7 @@ st.subheader("Manage your content ideas efficiently.")
 st.sidebar.title("Navigation")
 section = st.sidebar.radio("Go to:", [
     "Home",
-    "Content Ideas",
+    "Fremium Content",
     "Premium Content",
     "Content Calendar",
     "Viral Strategies",
