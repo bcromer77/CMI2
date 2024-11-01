@@ -2,14 +2,44 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
 
-# Load and clean data
-@st.cache_data
+# Simulated data for content ideas
 def load_data():
-    file_path = 'CMI_content_ideas.xlsx'
-    data = pd.read_excel(file_path, skiprows=2, header=1)
-    data.columns = ["Index", "Number", "Title", "Subheadings", "Notes_Angles"]
-    data = data.dropna(subset=["Number", "Title"]).reset_index(drop=True)
-    data["Completed"] = False  # Initialize a 'Completed' column
+    data = pd.DataFrame({
+        "Index": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "Number": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "Title": [
+            "10 Influencer Marketing Terms You Need to Know",
+            "How to Identify the Right Influencer for Your Brand",
+            "Step-by-Step: Launching Your First Influencer Campaign",
+            "Why Every Marketer Should Care About Influencer Marketing",
+            "Crafting the Perfect Influencer Brief",
+            "The Ethics of Influencer Marketing",
+            "5 Common Influencer Marketing Mistakes to Avoid",
+            "Influencer Marketing on a Budget: Tips for Small Brands",
+            "The Science of Influencer Audience Analysis",
+            "How to Measure the ROI of Your Influencer Campaigns"
+        ],
+        "Subheadings": [
+            "Glossary of Terms", "Defining Your Goals", "Planning",
+            "The Rise of Influencers", "Key Elements of a Brief",
+            "Importance of Authenticity", "Lessons Learned",
+            "DIY Approaches", "Understanding Your Audience",
+            "Defining ROI"
+        ],
+        "Notes_Angles": [
+            "Definitions, Usage, Importance in Strategy",
+            "Tools for Research, Metrics to Consider",
+            "Checklists, Common Pitfalls, Case Studies",
+            "Statistics, Market Analysis, Brand Examples",
+            "Templates, Best Practices, Communication Tips",
+            "FTC Guidelines, Transparency, Case Studies",
+            "Lessons Learned, Consequences of Mistakes",
+            "DIY Approaches, Budgeting Tips",
+            "Demographics, Engagement Rates, Tools",
+            "Examples, Calculation Methods, Importance of Accuracy"
+        ],
+        "Completed": [False] * 10
+    })
     
     # Categorize content based on a predefined list
     freemium_titles = [
@@ -28,13 +58,13 @@ def load_data():
     )
     return data
 
+# Load the simulated data into session state
+if "content_data" not in st.session_state:
+    st.session_state["content_data"] = load_data()
+
 # Function to toggle task status
 def toggle_task_status(index):
     st.session_state["content_data"].at[index, "Completed"] = not st.session_state["content_data"].at[index, "Completed"]
-
-# Initialize or load data into the session state
-if "content_data" not in st.session_state:
-    st.session_state["content_data"] = load_data()
 
 # Page Configuration
 st.set_page_config(page_title="CMI Content Management Dashboard", layout="wide")
