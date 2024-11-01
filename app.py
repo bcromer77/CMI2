@@ -14,13 +14,14 @@ section = st.sidebar.radio("Go to:", [
     "Home",
     "Content Ideas",
     "Premium Content",
+    "Content Calendar",
     "SEO Strategy",
     "Notes & To-Do",
     "Links & Resources"
 ])
 
 # Sidebar Links for Freemium Content Ideas
-st.sidebar.markdown("### How to Build and Promote These Freemium Content Ideas")
+st.sidebar.markdown("### What I Need to Build and Promote These Freemium Content Ideas")
 st.sidebar.markdown("[Content Calendar Template](#content-calendar-template)", unsafe_allow_html=True)
 st.sidebar.markdown("[Mini Case Study Series](#mini-case-study-series)", unsafe_allow_html=True)
 st.sidebar.markdown("[Influencer Contract Basics](#influencer-contract-basics)", unsafe_allow_html=True)
@@ -121,10 +122,14 @@ if section == "Content Ideas":
         st.write(f"**Status:** {'✔️ Completed' if item['Status'] == 'Completed' else '❌ Not Completed'}")
         st.markdown("---")
 
-# Additional Content Sections
+# Additional Sections
 if section == "Premium Content":
     st.header("Premium Content")
     st.write("Manage your premium content strategies here.")
+
+if section == "Content Calendar":
+    st.header("Content Calendar")
+    st.write("Plan and manage your content with our content calendar.")
 
 if section == "SEO Strategy":
     st.header("SEO Strategy")
