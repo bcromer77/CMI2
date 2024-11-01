@@ -47,22 +47,49 @@ if section == "Content Ideas":
             "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task3")
         },
         {
-            "Content Type": "Premium",
-            "Title": "Masterclass: Influencer Strategy for Municipal Tourism",
-            "Description": "In-depth training on crafting effective influencer strategies.",
-            "SEO Keywords": "Advanced influencer marketing, Tourism strategy masterclass",
-            "Call to Action": "Enroll Now",
-            "Related Premium Content": "Custom Consultation",
-            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task4")
+            "Content Type": "Freemium",
+            "Title": "Content Calendar Template",
+            "Description": "A downloadable content calendar template for planning influencer campaigns.",
+            "SEO Keywords": "Content calendar template, Influencer marketing planner",
+            "Call to Action": "Download the template",
+            "Related Premium Content": "Content Strategy Workshop",
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task6")
         },
         {
-            "Content Type": "Premium",
-            "Title": "Influencer Vetting Toolkit",
-            "Description": "Comprehensive tools for vetting and matching influencers.",
-            "SEO Keywords": "Vetting influencers, Influencer matching system",
-            "Call to Action": "Purchase Toolkit",
-            "Related Premium Content": "Advanced Analytics Suite",
-            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task5")
+            "Content Type": "Freemium",
+            "Title": "Mini Case Study Series",
+            "Description": "Short success stories of effective influencer marketing campaigns.",
+            "SEO Keywords": "Influencer case studies, Marketing success stories",
+            "Call to Action": "Read the case studies",
+            "Related Premium Content": "Full Case Study Library",
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task7")
+        },
+        {
+            "Content Type": "Freemium",
+            "Title": "Influencer Contract Basics",
+            "Description": "A guide explaining the essentials of influencer contracts.",
+            "SEO Keywords": "Influencer contract basics, Legal guide for influencer marketing",
+            "Call to Action": "Download the guide",
+            "Related Premium Content": "Influencer Legal Toolkit",
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task8")
+        },
+        {
+            "Content Type": "Freemium",
+            "Title": "Webinar: Influencer Marketing 101",
+            "Description": "A free webinar covering the basics of influencer marketing.",
+            "SEO Keywords": "Influencer marketing webinar, Beginner's guide to influencer marketing",
+            "Call to Action": "Register for the webinar",
+            "Related Premium Content": "Advanced Influencer Marketing Webinar Series",
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task9")
+        },
+        {
+            "Content Type": "Freemium",
+            "Title": "Social Media Compliance Infographic",
+            "Description": "An easy-to-understand infographic on social media compliance rules.",
+            "SEO Keywords": "Social media compliance, Influencer marketing infographic",
+            "Call to Action": "Share the infographic",
+            "Related Premium Content": "Compliance Masterclass",
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task10")
         }
     ]
 
