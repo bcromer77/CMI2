@@ -28,7 +28,7 @@ if section == "Course Tutors":
     
     # Card for Kay Munday
     st.markdown("---")
-    st.image("path_to_kay_munday_image.jpg", width=150)  # Placeholder for image
+    # st.image("path_to_kay_munday_image.jpg", width=150)  # Remove or replace with an actual image URL
     st.subheader("Building Confidence")
     st.write("**Instructor**: Kay Munday")
     st.write("""
@@ -40,7 +40,7 @@ if section == "Course Tutors":
     
     # Card for Dr. James McCabe
     st.markdown("---")
-    st.image("path_to_james_mccabe_image.jpg", width=150)  # Placeholder for image
+    # st.image("path_to_james_mccabe_image.jpg", width=150)  # Remove or replace with an actual image URL
     st.subheader("Storytelling Narrative")
     st.write("**Instructor**: Dr. James McCabe")
     st.write("""
@@ -51,7 +51,7 @@ if section == "Course Tutors":
     
     # Card for Brian Jenner
     st.markdown("---")
-    st.image("path_to_brian_jenner_image.jpg", width=150)  # Placeholder for image
+    # st.image("path_to_brian_jenner_image.jpg", width=150)  # Remove or replace with an actual image URL
     st.subheader("Rhetoric")
     st.write("**Instructor**: Brian Jenner")
     st.write("""
