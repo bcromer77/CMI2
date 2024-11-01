@@ -60,15 +60,40 @@ elif section == "Links & Resources":
 elif section == "Course Tutors":
     st.header("Course Tutors")
     st.write("Learn from our expert speakers, each specializing in a unique aspect of brand reputation and storytelling:")
-    st.subheader("Building Confidence")
-    st.write("**Instructor:** Kay Munday")
-    st.write("Kay Munday is an expert in helping professionals build confidence and presence in high-stakes situations. With years of experience in leadership coaching and public speaking, Kay has transformed countless professionals into confident, compelling communicators.")
-    st.subheader("Storytelling Narrative")
-    st.write("**Instructor:** Dr. James McCabe")
-    st.write("Dr. James McCabe explores the art of storytelling as a strategic tool for brands. His sessions dive deep into crafting narratives that control and elevate brand reputation, making complex concepts accessible and actionable.")
-    st.subheader("Rhetoric")
-    st.write("**Instructor:** Brian Jenner")
-    st.write("Brian Jenner specializes in the power of rhetoric, teaching professionals how to use persuasive language to influence and engage audiences effectively.")
+    
+    # Improved layout using columns
+    st.markdown("---")
+    
+    # Building Confidence
+    col1, col2 = st.columns([1, 3])
+    with col1:
+        st.image("path_to_kay_image.jpg", use_column_width=True)  # Replace with the actual image path
+    with col2:
+        st.subheader("Building Confidence")
+        st.write("**Instructor:** Kay Munday")
+        st.write("Kay Munday is an expert in helping professionals build confidence and presence in high-stakes situations. With years of experience in leadership coaching and public speaking, Kay has transformed countless professionals into confident, compelling communicators.")
+    
+    st.markdown("---")
+
+    # Storytelling Narrative
+    col1, col2 = st.columns([1, 3])
+    with col1:
+        st.image("path_to_james_image.jpg", use_column_width=True)  # Replace with the actual image path
+    with col2:
+        st.subheader("Storytelling Narrative")
+        st.write("**Instructor:** Dr. James McCabe")
+        st.write("Dr. James McCabe explores the art of storytelling as a strategic tool for brands. His sessions dive deep into crafting narratives that control and elevate brand reputation, making complex concepts accessible and actionable.")
+    
+    st.markdown("---")
+
+    # Rhetoric
+    col1, col2 = st.columns([1, 3])
+    with col1:
+        st.image("path_to_brian_image.jpg", use_column_width=True)  # Replace with the actual image path
+    with col2:
+        st.subheader("Rhetoric")
+        st.write("**Instructor:** Brian Jenner")
+        st.write("Brian Jenner specializes in the power of rhetoric, teaching professionals how to use persuasive language to influence and engage audiences effectively.")
 
 # New Courses Section
 elif section == "Courses":
@@ -186,28 +211,5 @@ elif section == "Courses":
     elif course_section == "Crisis Identification Stages":
         st.header("Crisis Identification Stages - From Fear to Proactivity")
         st.write("""
-            Each RippleXp course addresses a critical stage in crisis management, from early detection to response. 
-            We position RippleXp courses as essential tools for understanding where and how reputational threats emerge.
-            
-            - **Stage 1**: Identify reputation risks.
-            - **Stage 2**: Address complications and educate through storytelling.
-            - **Stage 3**: Engage ongoing RippleXn monitoring services for continued reputation management.
-        """)
-
-    elif course_section == "Course Assessment":
-        st.header("Course Assessment - Customized Recommendations")
-        st.write("""
-            Our assessment tool helps clients identify the most relevant RippleXp courses based on their brand’s unique needs, 
-            guiding them seamlessly into the RippleXn ecosystem.
-        """)
-        st.subheader("Choose Your Path:")
-        st.write("""
-            - **Introductory Assessment**: Determine your starting point.
-            - **Advanced Analysis**: For brands needing immediate intervention.
-        """)
-
-   # Footer CTA
-st.write("---")
-st.write("Ready to secure your brand’s reputation? Start your RippleXp journey and prepare for RippleXn’s comprehensive monitoring services.")
-st.button("Contact Us for a Free Consultation")
+            Each RippleXp course addresses a critical stage in
 
