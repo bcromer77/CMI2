@@ -212,4 +212,17 @@ elif section == "Courses":
         st.header("Crisis Identification Stages - From Fear to Proactivity")
         st.write("""
             Each RippleXp course addresses a critical stage in
+# Content for Each Subsection
+if course_section == "Overview":
+    st.header("Overview: RippleXp as a Top-of-Funnel Approach")
+    st.write("""
+        RippleXp acts as a strategic top-of-funnel entry point for RippleXn’s core offerings. By engaging clients through storytelling 
+        and reputation management courses, we position RippleXn’s deeper social listening services as the logical next step.
+    """)
+    st.subheader("Key Objectives:")
+    st.write("""
+        - **Leverage Fear of Reputational Damage**: RippleXp addresses brand vulnerability head-on, sparking interest through actionable insights.
+        - **Drive Discovery through Storytelling**: Courses are structured to teach clients the art of storytelling while subtly preparing them for RippleXn.
+        - **Facilitate Smooth Transitions**: Graduates of RippleXp’s courses are primed for more advanced reputation management services.
+    """)
 
