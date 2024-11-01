@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 
 # Page Configuration
-st.set_page_config(page_title="CMI Content Management Dashboard", layout="wide")
+st.set_page_config(page_title="RippleXp Content Management Dashboard", layout="wide")
 
 # Home Page Title
 st.title("RippleXp Content Management Dashboard")
@@ -13,7 +13,7 @@ st.subheader("Manage your content ideas efficiently.")
 st.sidebar.title("Navigation")
 section = st.sidebar.radio("Go to:", [
     "Home",
-    "Fremium Content",
+    "Content Ideas",
     "Premium Content",
     "Content Calendar",
     "Viral Strategies",
@@ -24,18 +24,19 @@ section = st.sidebar.radio("Go to:", [
 
 # Sidebar Links for Freemium Content Ideas
 st.sidebar.markdown("### What I Need to Build and Promote These Freemium Content Ideas")
-st.sidebar.markdown("[Content Calendar Template](#content-calendar-template)", unsafe_allow_html=True)
-st.sidebar.markdown("[Mini Case Study Series](#mini-case-study-series)", unsafe_allow_html=True)
-st.sidebar.markdown("[Influencer Contract Basics](#influencer-contract-basics)", unsafe_allow_html=True)
-st.sidebar.markdown("[Webinar: Influencer Marketing 101](#webinar-influencer-marketing-101)", unsafe_allow_html=True)
-st.sidebar.markdown("[Social Media Compliance Infographic](#social-media-compliance-infographic)", unsafe_allow_html=True)
+st.sidebar.markdown("- [Content Calendar Template](#content-calendar-template)", unsafe_allow_html=True)
+st.sidebar.markdown("- [Mini Case Study Series](#mini-case-study-series)", unsafe_allow_html=True)
+st.sidebar.markdown("- [Influencer Contract Basics](#influencer-contract-basics)", unsafe_allow_html=True)
+st.sidebar.markdown("- [Webinar: Influencer Marketing 101](#webinar-influencer-marketing-101)", unsafe_allow_html=True)
+st.sidebar.markdown("- [Social Media Compliance Infographic](#social-media-compliance-infographic)", unsafe_allow_html=True)
 
 # Content Ideas Section
 if section == "Content Ideas":
     st.header("Content Ideas")
     st.write("Here you can manage your content ideas with task statuses.")
 
-    # Freemium Content with Toggles
+    # Freemium Content with Neater Checkboxes
+    st.subheader("Freemium Content")
     freemium_content = [
         {"Title": "Beginner’s Guide to Influencer Marketing", "Status": st.checkbox("Completed", key="freemium1")},
         {"Title": "Checklist for Influencer Selection", "Status": st.checkbox("Completed", key="freemium2")},
@@ -55,7 +56,8 @@ if section == "Premium Content":
     st.header("Premium Content")
     st.write("Manage your premium content strategies here.")
 
-    # Premium Content with Toggles
+    # Premium Content with Neater Checkboxes
+    st.subheader("Premium Content")
     premium_content = [
         {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Status": st.checkbox("Completed", key="premium1")},
         {"Title": "Influencer Vetting Toolkit", "Status": st.checkbox("Completed", key="premium2")},
@@ -102,8 +104,12 @@ if section == "Content Calendar":
         calendar_tasks.append({"Task": "", "Type": ""})
 
     # Create DataFrame for the calendar
-    calendar_df = pd.DataFrame({"Date": dates, "Task": [t["Task"] for t in calendar_tasks], "Type": [t["Type"] for t in calendar_tasks]})
-    
+    calendar_df = pd.DataFrame({
+        "Date": dates,
+        "Task": [t["Task"] for t in calendar_tasks],
+        "Type": [t["Type"] for t in calendar_tasks]
+    })
+
     # Display the calendar
     st.dataframe(calendar_df, use_container_width=True)
     st.write("Note: You can update tasks as needed.")
@@ -129,6 +135,7 @@ if section == "Notes & To-Do":
 if section == "Links & Resources":
     st.header("Links & Resources")
     st.write("Access useful links and resources for influencer marketing.")
+
 
 
 
