@@ -5,8 +5,9 @@ from datetime import datetime, timedelta
 # Simulated data for content ideas
 def load_data():
     data = pd.DataFrame({
-        "Index": range(1, 11),
+        "Index": range(1, 15),
         "Title": [
+            # Freemium Content
             "10 Influencer Marketing Terms You Need to Know",
             "How to Identify the Right Influencer for Your Brand",
             "Step-by-Step: Launching Your First Influencer Campaign",
@@ -15,17 +16,29 @@ def load_data():
             "The Ethics of Influencer Marketing",
             "5 Common Influencer Marketing Mistakes to Avoid",
             "Influencer Marketing on a Budget: Tips for Small Brands",
+            # Premium Content
             "The Science of Influencer Audience Analysis",
-            "How to Measure the ROI of Your Influencer Campaigns"
+            "How to Measure the ROI of Your Influencer Campaigns",
+            "Advanced Influencer Contract Negotiation",
+            "Data-Driven Influencer Selection",
+            "Crisis Management in Influencer Campaigns",
+            "Legal Aspects of Influencer Marketing",
+            "Building a Long-Term Influencer Program"
         ],
         "Subheadings": [
+            # Freemium Content Subheadings
             "Glossary of Terms", "Defining Your Goals", "Planning",
             "The Rise of Influencers", "Key Elements of a Brief",
             "Importance of Authenticity", "Lessons Learned",
-            "DIY Approaches", "Understanding Your Audience",
-            "Defining ROI"
+            "DIY Approaches",
+            # Premium Content Subheadings
+            "Understanding Your Audience", "Defining ROI",
+            "Contract Essentials", "Analytics Tools Overview",
+            "Crisis Response Strategies", "Legal Compliance 101",
+            "Long-Term Strategy Planning"
         ],
         "Notes_Angles": [
+            # Freemium Content Notes/Angles
             "Definitions, Usage, Importance in Strategy",
             "Tools for Research, Metrics to Consider",
             "Checklists, Common Pitfalls, Case Studies",
@@ -34,10 +47,24 @@ def load_data():
             "FTC Guidelines, Transparency, Case Studies",
             "Lessons Learned, Consequences of Mistakes",
             "DIY Approaches, Budgeting Tips",
+            # Premium Content Notes/Angles
             "Demographics, Engagement Rates, Tools",
-            "Examples, Calculation Methods, Importance of Accuracy"
+            "Examples, Calculation Methods, Importance of Accuracy",
+            "Negotiation Tactics, Contract Templates",
+            "Using Data for Strategic Selection",
+            "Real-World Crisis Case Studies",
+            "International Regulations, FTC Guidelines",
+            "Sustaining Influencer Partnerships"
         ],
-        "Completed": [False] * 10
+        "Delivery Format": [
+            # Delivery Formats
+            "Infographic (Canva Design)", "Interactive Checklist (PDF)", "Guide (PDF)",
+            "Blog Post (Quick Read)", "Template (Downloadable PDF)",
+            "Whitepaper (Downloadable)", "Quick Article", "Budget Guide (PDF)",
+            "Masterclass (Video Series)", "Video Series", "E-book (PDF)", "Interactive Webinar",
+            "Case Study Video Series", "Online Course (Certification)", "Workshop (Workbook)"
+        ],
+        "Completed": [False] * 15
     })
     
     # Categorize content as Freemium or Premium
@@ -93,6 +120,7 @@ if section == "Freemium Content":
         with st.expander(f"📋 {row['Title']}"):
             st.write(f"**Subheadings**: {row['Subheadings']}")
             st.write(f"**Notes/Angles**: {row['Notes_Angles']}")
+            st.write(f"**Best Delivery Format**: {row['Delivery Format']}")
             st.checkbox("Completed", value=row["Completed"], key=f"task_freemium_{index}", on_change=toggle_task_status, args=(index,))
 
 # Premium Content Section
@@ -107,6 +135,7 @@ elif section == "Premium Content":
         with st.expander(f"🌟 {row['Title']}"):
             st.write(f"**Subheadings**: {row['Subheadings']}")
             st.write(f"**Notes/Angles**: {row['Notes_Angles']}")
+            st.write(f"**Best Delivery Format**: {row['Delivery Format']}")
             st.checkbox("Completed", value=row["Completed"], key=f"task_premium_{index}", on_change=toggle_task_status, args=(index,))
 
 # Content Calendar Section
@@ -132,9 +161,15 @@ elif section == "Course Tutors":
     st.write("Learn from world-class experts who bring years of experience in marketing, storytelling, and public speaking.")
     st.markdown("---")
 
-    # Example Tutor Profiles
+    # Tutor Profiles
     tutor_profiles = [
-        {"Name": "Kay Munday", "Specialization": "Building Confidence", "Bio": "Leadership coach who empowers professionals to communicate confidently."},
+        {
+            "Name": "Kay Munday", 
+            "Specialization": "Building Confidence", 
+            "Bio": ("Kay Munday is an international speaker and coach dedicated to eradicating labels through storytelling. "
+                    "She speaks on Women’s Empowerment, DEI, and Mental Health, drawing from her personal journey of overcoming "
+                    "dyslexia and anxiety. As Google's go-to speaking coach, she transforms professionals into confident communicators.")
+        },
         {"Name": "Dr. James McCabe", "Specialization": "Storytelling Narrative", "Bio": "Ph.D. in Communications, specializing in strategic storytelling."},
         {"Name": "Brian Jenner", "Specialization": "Rhetoric", "Bio": "Author and public speaking expert focused on the art of persuasion."}
     ]
@@ -149,7 +184,7 @@ elif section == "Courses":
     st.write("Our courses are designed to take you from foundational concepts to advanced influencer marketing strategies.")
     st.markdown("---")
 
-    # Example Course Offerings
+    # Course Offerings
     courses = [
         {"Title": "Reputation - RippleXp", "Description": "Top-of-funnel course for managing brand reputation through storytelling."},
         {"Title": "Influencer Marketing Masterclass", "Description": "Advanced strategies for building long-term relationships and measuring ROI."}
