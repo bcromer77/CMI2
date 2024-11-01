@@ -56,7 +56,7 @@ def load_data():
             "International Regulations, FTC Guidelines",
             "Sustaining Influencer Partnerships"
         ],
-        "Delivery_Format": [
+        "Delivery Format": [
             # Delivery Formats
             "Infographic (Canva Design)", "Interactive Checklist (PDF)", "Guide (PDF)",
             "Blog Post (Quick Read)", "Template (Downloadable PDF)",
@@ -122,7 +122,7 @@ if section == "Freemium Content":
         with st.expander(f"📋 {row['Title']}"):
             st.write(f"**Subheadings**: {row['Subheadings']}")
             st.write(f"**Notes/Angles**: {row['Notes_Angles']}")
-            st.write(f"**Best Delivery Format**: {row['Delivery_Format']}")
+            st.write(f"**Best Delivery Format**: {row['Delivery Format']}")
             st.checkbox("Completed", value=row["Completed"], key=f"task_freemium_{index}", on_change=toggle_task_status, args=(index,))
 
 # Premium Content Section
@@ -137,7 +137,7 @@ elif section == "Premium Content":
         with st.expander(f"🌟 {row['Title']}"):
             st.write(f"**Subheadings**: {row['Subheadings']}")
             st.write(f"**Notes/Angles**: {row['Notes_Angles']}")
-            st.write(f"**Best Delivery Format & Pricing**: {row['Delivery_Format']}")
+            st.write(f"**Best Delivery Format & Pricing**: {row['Delivery Format']}")
             st.checkbox("Completed", value=row["Completed"], key=f"task_premium_{index}", on_change=toggle_task_status, args=(index,))
 
 # Content Calendar Section
@@ -189,10 +189,4 @@ elif section == "Courses":
     # Course Offerings
     courses = [
         {"Title": "Reputation - RippleXp", "Description": "Top-of-funnel course for managing brand reputation through storytelling."},
-        {"Title": "Influencer Marketing Masterclass", "Description": "Advanced strategies for building long-term relationships and measuring ROI."}
-    ]
-    
-    # Loop to display course information
-    for course in courses:
-        with st.expander(f"📘 {course['Title']}"):
-            st.write(course["Description"])
+        {"Title": "Influencer Marketing Masterclass", "Description": "Advanced strategies for building long-term
