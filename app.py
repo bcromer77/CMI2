@@ -274,6 +274,7 @@ elif section == "Courses":
             - **Drive Discovery through Storytelling**: Courses are structured to teach clients the art of storytelling while subtly preparing them for RippleXn.
             - **Facilitate Smooth Transitions**: Graduates of RippleXp's courses are primed for more advanced reputation management services.
         """)
+        st.button("Contact Us for a Free Consultation", key="button_overview")
 
     elif course_section == "The RippleXp Approach":
         st.header("The RippleXp Approach to Reputation Management")
@@ -288,6 +289,7 @@ elif section == "Courses":
             RippleXp helps brands develop the storytelling skills to navigate and control their reputation, leading naturally to the need 
             for RippleXn's advanced social listening solutions.
         """)
+        st.button("Contact Us for a Free Consultation", key="button_ripplexp_approach")
 
     elif course_section == "Target Audiences":
         st.header("Target Audiences - Four Key Areas of Focus")
@@ -299,7 +301,7 @@ elif section == "Courses":
             - **Lost Audience (Crisis Management)**: Brands needing real-time recovery tactics.
             - **Other Voices Speaking**: Brands with influencers or advocates requiring training in brand representation.
         """)
-        st.write("---")
+        st.button("Contact Us for a Free Consultation", key="button_target_audiences")
 
     elif course_section == "Entry-Level Products":
         st.header("Entry-Level Products for Customer Acquisition")
@@ -314,6 +316,7 @@ elif section == "Courses":
         st.write("""
             - **Half-Day Workshop**: Brief training sessions focused on immediate insights and regulatory basics.
         """)
+        st.button("Contact Us for a Free Consultation", key="button_entry_level")
 
     elif course_section == "Advanced Options":
         st.header("Advanced Options for Engaging Sophisticated Buyers")
@@ -328,6 +331,7 @@ elif section == "Courses":
             - **Full-Day Workshop**: Intensive storytelling and brand reputation sessions.
             - **3-Day Immersive**: In-depth courses with hands-on application and strategy development.
         """)
+        st.button("Contact Us for a Free Consultation", key="button_advanced_options")
 
     elif course_section == "Commercialization & Off-the-Shelf Products":
         st.header("Commercialization & Off-the-Shelf Products")
@@ -339,6 +343,7 @@ elif section == "Courses":
             - **Audience Insight Tools**: Pre-packaged courses that guide brands through common pitfalls.
             - **Advanced Monitoring Solutions**: RippleXn's full-service offerings for real-time brand listening.
         """)
+        st.button("Contact Us for a Free Consultation", key="button_commercialization")
 
     elif course_section == "Crisis Identification Stages":
         st.header("Crisis Identification Stages - From Fear to Proactivity")
@@ -351,9 +356,9 @@ elif section == "Courses":
             - **Stage 2**: Address complications and educate through storytelling.
             - **Stage 3**: Engage ongoing RippleXn monitoring services for continued reputation management.
         """)
+        st.button("Contact Us for a Free Consultation", key="button_crisis_stages")
 
 # Footer (optional)
 st.write("---")
 st.write("Ready to transform your marketing strategy? Start your RippleXp journey today.")
-st.button("Contact Us for a Free Consultation")
-# Keep the rest of your existing sections for Freemium Content, Premium Content, etc.
+
