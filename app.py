@@ -10,12 +10,30 @@ st.subheader("Manage your content ideas efficiently.")
 
 # Sidebar Navigation
 st.sidebar.title("Navigation")
-section = st.sidebar.radio("Go to:", ["Home", "Content Ideas", "Premium Content", "SEO Strategy", "Notes & To-Do", "Links & Resources"])
+section = st.sidebar.radio("Go to:", [
+    "Home",
+    "Content Ideas",
+    "Premium Content",
+    "SEO Strategy",
+    "Notes & To-Do",
+    "Links & Resources"
+])
 
-# Content Ideas Section
+# Sidebar Links for Freemium Content Ideas
+st.sidebar.markdown("### How to Build and Promote These Freemium Content Ideas")
+st.sidebar.markdown("[Content Calendar Template](#content-calendar-template)", unsafe_allow_html=True)
+st.sidebar.markdown("[Mini Case Study Series](#mini-case-study-series)", unsafe_allow_html=True)
+st.sidebar.markdown("[Influencer Contract Basics](#influencer-contract-basics)", unsafe_allow_html=True)
+st.sidebar.markdown("[Webinar: Influencer Marketing 101](#webinar-influencer-marketing-101)", unsafe_allow_html=True)
+st.sidebar.markdown("[Social Media Compliance Infographic](#social-media-compliance-infographic)", unsafe_allow_html=True)
+
+# Main Content
 if section == "Content Ideas":
     st.header("Content Ideas")
     st.write("Here you can manage your content ideas with task statuses.")
+
+    # Starting the calendar from November 4th
+    st.date_input("Content Calendar Start Date", pd.Timestamp("2024-11-04"))
 
     # Creating the content table with toggles
     content_data = [
@@ -102,6 +120,31 @@ if section == "Content Ideas":
         st.write(f"**Related Premium Content:** {item['Related Premium Content']}")
         st.write(f"**Status:** {'✔️ Completed' if item['Status'] == 'Completed' else '❌ Not Completed'}")
         st.markdown("---")
+
+# Additional Content Sections
+if section == "Premium Content":
+    st.header("Premium Content")
+    st.write("Manage your premium content strategies here.")
+
+if section == "SEO Strategy":
+    st.header("SEO Strategy")
+    st.write("Plan your SEO strategy to maximize reach.")
+
+if section == "Notes & To-Do":
+    st.header("Notes & To-Do")
+    st.write("Keep track of your notes and tasks.")
+
+if section == "Links & Resources":
+    st.header("Links & Resources")
+    st.write("Access useful links and resources for influencer marketing.")
+
+# Add strategies to make content go viral
+st.subheader("Strategies to Make Content Go Viral")
+st.write("1. **Utilize Hashtags**: Research trending hashtags for influencer marketing.")
+st.write("2. **Collaborate with Micro-Influencers**: Offer them your freemium content to share with their audience.")
+st.write("3. **Run Contests or Giveaways**: Encourage followers to share your content for a chance to win a premium resource.")
+st.write("4. **Create Interactive Content**: Use polls and quizzes on Instagram Stories and LinkedIn to engage your audience.")
+st.write("5. **Email Marketing**: Send updates to your subscribers about new content and encourage them to share with their network.")
 
 
 
