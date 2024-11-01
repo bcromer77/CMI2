@@ -22,83 +22,58 @@ section = st.sidebar.radio("Go to:", [
     "Course Tutors"
 ])
 
-# Helper function for checkboxes and status updates
-def render_task(title, description, completed_key):
-    completed = st.checkbox(title, key=completed_key)
-    status = "✔️ Completed" if completed else "❌ Not Completed"
-    st.write(f"**Status:** {status}")
-    st.write(description)
-    st.markdown("---")
+# Helper function to render tasks in a table format
+def render_task_table(task_list):
+    # Create a DataFrame for tasks
+    df = pd.DataFrame(task_list)
+    df["Status"] = df.apply(lambda row: "✔️ Completed" if row["Completed"] else "❌ Not Completed", axis=1)
+    
+    # Convert checkboxes into a list for rendering in a table
+    checkboxes = [st.checkbox(task["Title"], value=task["Completed"], key=task["Key"]) for task in task_list]
+    
+    # Update the "Completed" status based on checkbox values
+    for i, task in enumerate(task_list):
+        task["Completed"] = checkboxes[i]
+
+    # Display the DataFrame in a cleaner format
+    st.table(df[["Title", "Description", "Status"]])
 
 # Content Ideas Section
 if section == "Content Ideas":
     st.header("Content Ideas")
     st.write("Manage your content ideas and track their completion status.")
 
-    render_task("Beginner’s Guide to Influencer Marketing",
-                "A simple guide to understanding influencer marketing for tourism.",
-                "task_guide")
+    # List of content ideas
+    content_ideas = [
+        {"Title": "Beginner’s Guide to Influencer Marketing", "Description": "A simple guide to understanding influencer marketing for tourism.", "Completed": False, "Key": "task_guide"},
+        {"Title": "Checklist for Influencer Selection", "Description": "A detailed checklist to help choose the right influencers.", "Completed": False, "Key": "task_checklist"},
+        {"Title": "Top 10 Red Flags to Avoid", "Description": "Highlights common mistakes when working with influencers.", "Completed": False, "Key": "task_red_flags"},
+        {"Title": "Content Calendar Template", "Description": "A downloadable content calendar template for planning influencer campaigns.", "Completed": False, "Key": "task_calendar"},
+        {"Title": "Mini Case Study Series", "Description": "Short success stories of effective influencer marketing campaigns.", "Completed": False, "Key": "task_case_studies"},
+        {"Title": "Influencer Contract Basics", "Description": "A guide explaining the essentials of influencer contracts.", "Completed": False, "Key": "task_contract_basics"},
+        {"Title": "Webinar: Influencer Marketing 101", "Description": "A free webinar covering the basics of influencer marketing.", "Completed": False, "Key": "task_webinar"},
+        {"Title": "Social Media Compliance Infographic", "Description": "An easy-to-understand infographic on social media compliance rules.", "Completed": False, "Key": "task_infographic"}
+    ]
 
-    render_task("Checklist for Influencer Selection",
-                "A detailed checklist to help choose the right influencers.",
-                "task_checklist")
-
-    render_task("Top 10 Red Flags to Avoid",
-                "Highlights common mistakes when working with influencers.",
-                "task_red_flags")
-
-    render_task("Content Calendar Template",
-                "A downloadable content calendar template for planning influencer campaigns.",
-                "task_calendar")
-
-    render_task("Mini Case Study Series",
-                "Short success stories of effective influencer marketing campaigns.",
-                "task_case_studies")
-
-    render_task("Influencer Contract Basics",
-                "A guide explaining the essentials of influencer contracts.",
-                "task_contract_basics")
-
-    render_task("Webinar: Influencer Marketing 101",
-                "A free webinar covering the basics of influencer marketing.",
-                "task_webinar")
-
-    render_task("Social Media Compliance Infographic",
-                "An easy-to-understand infographic on social media compliance rules.",
-                "task_infographic")
+    render_task_table(content_ideas)
 
 # Premium Content Section
 elif section == "Premium Content":
     st.header("Premium Content")
     st.write("Manage your premium content strategies and track their completion status.")
 
-    render_task("Masterclass: Influencer Strategy for Municipal Tourism",
-                "In-depth training on crafting effective influencer strategies.",
-                "task_masterclass")
+    # List of premium content
+    premium_content = [
+        {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Description": "In-depth training on crafting effective influencer strategies.", "Completed": False, "Key": "task_masterclass"},
+        {"Title": "Influencer Vetting Toolkit", "Description": "Comprehensive tools for vetting and matching influencers.", "Completed": False, "Key": "task_vetting_toolkit"},
+        {"Title": "Guide to Influencer Contracts", "Description": "Detailed guidance on creating and managing influencer contracts.", "Completed": False, "Key": "task_influencer_contracts"},
+        {"Title": "Content Strategy Workshop", "Description": "Interactive workshop to build a strong content strategy.", "Completed": False, "Key": "task_content_strategy"},
+        {"Title": "Full Case Study Library", "Description": "Access a library of full case studies for in-depth learning.", "Completed": False, "Key": "task_case_library"},
+        {"Title": "Influencer Legal Toolkit", "Description": "All-in-one legal toolkit for influencer marketing compliance.", "Completed": False, "Key": "task_legal_toolkit"},
+        {"Title": "Advanced Influencer Marketing Webinar Series", "Description": "Series of advanced webinars covering influencer marketing strategies.", "Completed": False, "Key": "task_advanced_webinar"}
+    ]
 
-    render_task("Influencer Vetting Toolkit",
-                "Comprehensive tools for vetting and matching influencers.",
-                "task_vetting_toolkit")
-
-    render_task("Guide to Influencer Contracts",
-                "Detailed guidance on creating and managing influencer contracts.",
-                "task_influencer_contracts")
-
-    render_task("Content Strategy Workshop",
-                "Interactive workshop to build a strong content strategy.",
-                "task_content_strategy")
-
-    render_task("Full Case Study Library",
-                "Access a library of full case studies for in-depth learning.",
-                "task_case_library")
-
-    render_task("Influencer Legal Toolkit",
-                "All-in-one legal toolkit for influencer marketing compliance.",
-                "task_legal_toolkit")
-
-    render_task("Advanced Influencer Marketing Webinar Series",
-                "Series of advanced webinars covering influencer marketing strategies.",
-                "task_advanced_webinar")
+    render_task_table(premium_content)
 
 # Content Calendar Section
 elif section == "Content Calendar":
@@ -134,47 +109,26 @@ elif section == "Content Calendar":
     })
     st.dataframe(calendar_df, use_container_width=True)
 
-# Viral Strategies Section
+# Other Sections (Viral Strategies, SEO Strategy, Notes & To-Do, Links & Resources, Course Tutors)
 elif section == "Viral Strategies":
     st.header("Viral Strategies")
     st.write("Explore strategies to make your content go viral.")
+    # (Viral strategies content)
 
-    st.subheader("1. Utilize Trending Hashtags")
-    st.write("Research and use trending hashtags relevant to your content. This increases visibility and connects your content to larger conversations happening online.")
-
-    st.subheader("2. Collaborate with Micro-Influencers")
-    st.write("Micro-influencers have highly engaged audiences. Collaborate with them to promote your freemium content. Their followers are more likely to engage with content that feels authentic.")
-
-    st.subheader("3. Run Contests or Giveaways")
-    st.write("Organize a contest or giveaway that encourages followers to share your content for a chance to win a premium resource. Make sure the rules are simple and engaging.")
-
-    st.subheader("4. Create Interactive Content")
-    st.write("Use polls, quizzes, and interactive stories on platforms like Instagram and LinkedIn. Engaging content is more likely to be shared, increasing reach and virality.")
-
-    st.subheader("5. Leverage Email Marketing")
-    st.write("Use email campaigns to announce new content. Include social sharing buttons and encourage subscribers to share the content with their network.")
-
-    st.subheader("6. Optimize for Social Platforms")
-    st.write("Tailor your content for each platform. Short videos work well on TikTok and Instagram, while in-depth articles may perform better on LinkedIn. Understand the unique characteristics of each platform to maximize impact.")
-
-    st.subheader("7. Use Eye-Catching Visuals")
-    st.write("High-quality images and videos are more likely to capture attention. Invest in good design to make your content stand out in crowded feeds.")
-
-    st.subheader("8. Engage with Your Audience")
-    st.write("Respond to comments, participate in conversations, and engage with your audience. The more interaction your content gets, the more likely it is to be amplified.")
-
-# Other Sections (Placeholder)
 elif section == "SEO Strategy":
     st.header("SEO Strategy")
     st.write("Plan your SEO strategy to maximize reach.")
+    # (SEO strategy content)
 
 elif section == "Notes & To-Do":
     st.header("Notes & To-Do")
     st.write("Keep track of your notes and tasks.")
+    # (Notes & To-Do content)
 
 elif section == "Links & Resources":
     st.header("Links & Resources")
     st.write("Access useful links and resources for influencer marketing.")
+    # (Links & Resources content)
 
 elif section == "Course Tutors":
     st.header("Course Tutors")
@@ -188,7 +142,6 @@ elif section == "Course Tutors":
     st.subheader("Rhetoric")
     st.write("**Instructor:** Brian Jenner")
     st.write("Brian Jenner specializes in the power of rhetoric, teaching professionals how to use persuasive language to influence and engage audiences effectively.")
-
 
 
 
