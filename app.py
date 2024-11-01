@@ -33,11 +33,13 @@ st.sidebar.markdown("[Social Media Compliance Infographic](#social-media-complia
 # Function to display content checklists
 def display_content_checklist(content_data):
     for item in content_data:
-        completed = st.checkbox(f"{item['Title']} - {'✔️ Completed' if item['Status'] == 'Completed' else '❌ Not Completed'}", value=item['Status'] == "Completed")
-        if completed:
+        is_completed = st.checkbox(f"{item['Title']}", value=item['Status'] == "Completed")
+        if is_completed:
             item['Status'] = "Completed"
         else:
             item['Status'] = "Not Completed"
+        st.write(f"Status: {'✔️ Completed' if item['Status'] == 'Completed' else '❌ Not Completed'}")
+        st.markdown("---")
 
 # Content Data for Freemium and Premium
 freemium_content_data = [
@@ -114,6 +116,7 @@ if section == "Notes & To-Do":
 if section == "Links & Resources":
     st.header("Links & Resources")
     st.write("Access useful links and resources for influencer marketing.")
+
 
 
 
