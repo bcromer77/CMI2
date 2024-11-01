@@ -115,8 +115,20 @@ elif section == "Course Tutors":
     st.header("Course Tutors")
     st.write("Learn from our expert speakers, each specializing in a unique aspect of brand reputation and storytelling:")
     st.subheader("Building Confidence")
+   # Course Tutors Section
+elif section == "Course Tutors":
+    st.header("Course Tutors")
+    st.write("Learn from our expert speakers, each specializing in a unique aspect of brand reputation and storytelling:")
+    
+    st.subheader("Building Confidence")
     st.write("**Instructor:** Kay Munday")
-    st.write("Kay Munday is an expert in helping professionals build confidence.")
+    st.write("""
+    Kay Munday is an international speaker and Google's preferred coach for public speaking. She empowers professionals 
+    to use storytelling as a tool for influence, helping them overcome communication barriers like glossophobia. 
+    With a focus on creating a psychologically safe environment, Kay’s sessions emphasize practical learning, enhancing 
+    voice, body language, and leadership communication. Her work is transformative, amplifying confidence and audience engagement.
+    """)
+
     st.subheader("Storytelling Narrative")
     st.write("**Instructor:** Dr. James McCabe")
     st.write("Dr. James McCabe explores the art of storytelling as a strategic tool.")
