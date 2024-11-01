@@ -35,85 +35,40 @@ if section == "Content Ideas":
     st.header("Content Ideas")
     st.write("Here you can manage your content ideas with task statuses.")
 
-    # Creating the content table with toggles
-    content_data = [
-        {"Title": "Beginner’s Guide to Influencer Marketing", "Status": "❌ Not Completed"},
-        {"Title": "Checklist for Influencer Selection", "Status": "❌ Not Completed"},
-        {"Title": "Top 10 Red Flags to Avoid", "Status": "❌ Not Completed"},
-        {"Title": "Content Calendar Template", "Status": "❌ Not Completed"},
-        {"Title": "Mini Case Study Series", "Status": "❌ Not Completed"},
-        {"Title": "Influencer Contract Basics", "Status": "❌ Not Completed"},
-        {"Title": "Webinar: Influencer Marketing 101", "Status": "❌ Not Completed"},
-        {"Title": "Social Media Compliance Infographic", "Status": "❌ Not Completed"}
+    # Freemium Content with Toggles
+    freemium_content = [
+        {"Title": "Beginner’s Guide to Influencer Marketing", "Status": st.checkbox("Completed", key="freemium1")},
+        {"Title": "Checklist for Influencer Selection", "Status": st.checkbox("Completed", key="freemium2")},
+        {"Title": "Top 10 Red Flags to Avoid", "Status": st.checkbox("Completed", key="freemium3")},
+        {"Title": "Content Calendar Template", "Status": st.checkbox("Completed", key="freemium4")},
+        {"Title": "Mini Case Study Series", "Status": st.checkbox("Completed", key="freemium5")},
+        {"Title": "Influencer Contract Basics", "Status": st.checkbox("Completed", key="freemium6")},
+        {"Title": "Webinar: Influencer Marketing 101", "Status": st.checkbox("Completed", key="freemium7")},
+        {"Title": "Social Media Compliance Infographic", "Status": st.checkbox("Completed", key="freemium8")}
     ]
 
-    # Display content ideas
-    for item in content_data:
-        st.write(f"{item['Title']} - {item['Status']}")
+    for item in freemium_content:
+        st.write(f"{item['Title']} - {'✔️ Completed' if item['Status'] else '❌ Not Completed'}")
 
 # Premium Content Section
 if section == "Premium Content":
     st.header("Premium Content")
     st.write("Manage your premium content strategies here.")
-    
-    premium_content_data = [
-        {
-            "Title": "Masterclass: Influencer Strategy for Municipal Tourism",
-            "Description": "In-depth training on crafting effective influencer strategies.",
-            "Call to Action": "Enroll Now",
-            "Status": "❌ Not Completed"
-        },
-        {
-            "Title": "Influencer Vetting Toolkit",
-            "Description": "Comprehensive tools for vetting and matching influencers.",
-            "Call to Action": "Purchase Toolkit",
-            "Status": "❌ Not Completed"
-        },
-        {
-            "Title": "Guide to Influencer Contracts",
-            "Description": "Detailed guide to structuring influencer contracts to protect your brand.",
-            "Call to Action": "Download the Guide",
-            "Status": "❌ Not Completed"
-        },
-        {
-            "Title": "Content Strategy Workshop",
-            "Description": "Interactive workshop to improve your content strategy for influencer campaigns.",
-            "Call to Action": "Sign Up for the Workshop",
-            "Status": "❌ Not Completed"
-        },
-        {
-            "Title": "Full Case Study Library",
-            "Description": "Access to a full library of successful influencer marketing case studies.",
-            "Call to Action": "Access Library",
-            "Status": "❌ Not Completed"
-        },
-        {
-            "Title": "Influencer Legal Toolkit",
-            "Description": "Toolkit with all the legal resources needed for influencer campaigns.",
-            "Call to Action": "Get the Toolkit",
-            "Status": "❌ Not Completed"
-        },
-        {
-            "Title": "Advanced Influencer Marketing Webinar Series",
-            "Description": "Webinar series covering advanced topics in influencer marketing.",
-            "Call to Action": "Register for the Series",
-            "Status": "❌ Not Completed"
-        },
-        {
-            "Title": "Compliance Masterclass",
-            "Description": "Masterclass on navigating compliance in influencer marketing.",
-            "Call to Action": "Join the Masterclass",
-            "Status": "❌ Not Completed"
-        }
+
+    # Premium Content with Toggles
+    premium_content = [
+        {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Status": st.checkbox("Completed", key="premium1")},
+        {"Title": "Influencer Vetting Toolkit", "Status": st.checkbox("Completed", key="premium2")},
+        {"Title": "Guide to Influencer Contracts", "Status": st.checkbox("Completed", key="premium3")},
+        {"Title": "Content Strategy Workshop", "Status": st.checkbox("Completed", key="premium4")},
+        {"Title": "Full Case Study Library", "Status": st.checkbox("Completed", key="premium5")},
+        {"Title": "Influencer Legal Toolkit", "Status": st.checkbox("Completed", key="premium6")},
+        {"Title": "Advanced Influencer Marketing Webinar Series", "Status": st.checkbox("Completed", key="premium7")},
+        {"Title": "Compliance Masterclass", "Status": st.checkbox("Completed", key="premium8")}
     ]
 
-    # Display premium content
-    for content in premium_content_data:
-        st.markdown(f"**{content['Title']}**")
-        st.write(content["Description"])
-        st.write(f"**Call to Action:** {content['Call to Action']}")
-        st.write(f"**Status:** {content['Status']}")
-        st.markdown("---")
+    for content in premium_content:
+        st.write(f"{content['Title']} - {'✔️ Completed' if content['Status'] else '❌ Not Completed'}")
 
 # Content Calendar Section
 if section == "Content Calendar":
@@ -124,29 +79,30 @@ if section == "Content Calendar":
     start_date = datetime(2024, 11, 4)
     dates = [start_date + timedelta(days=i) for i in range(30)]
     calendar_tasks = [
-        "Beginner’s Guide to Influencer Marketing",
-        "Checklist for Influencer Selection",
-        "Top 10 Red Flags to Avoid",
-        "Content Calendar Template",
-        "Mini Case Study Series",
-        "Influencer Contract Basics",
-        "Webinar: Influencer Marketing 101",
-        "Social Media Compliance Infographic",
-        "Masterclass: Influencer Strategy for Municipal Tourism",
-        "Influencer Vetting Toolkit",
-        "Guide to Influencer Contracts",
-        "Content Strategy Workshop",
-        "Full Case Study Library",
-        "Influencer Legal Toolkit",
-        "Advanced Influencer Marketing Webinar Series",
-        "Compliance Masterclass"
+        {"Task": "Beginner’s Guide to Influencer Marketing", "Type": "Freemium"},
+        {"Task": "Checklist for Influencer Selection", "Type": "Freemium"},
+        {"Task": "Top 10 Red Flags to Avoid", "Type": "Freemium"},
+        {"Task": "Content Calendar Template", "Type": "Freemium"},
+        {"Task": "Mini Case Study Series", "Type": "Freemium"},
+        {"Task": "Influencer Contract Basics", "Type": "Freemium"},
+        {"Task": "Webinar: Influencer Marketing 101", "Type": "Freemium"},
+        {"Task": "Social Media Compliance Infographic", "Type": "Freemium"},
+        {"Task": "Masterclass: Influencer Strategy for Municipal Tourism", "Type": "Premium"},
+        {"Task": "Influencer Vetting Toolkit", "Type": "Premium"},
+        {"Task": "Guide to Influencer Contracts", "Type": "Premium"},
+        {"Task": "Content Strategy Workshop", "Type": "Premium"},
+        {"Task": "Full Case Study Library", "Type": "Premium"},
+        {"Task": "Influencer Legal Toolkit", "Type": "Premium"},
+        {"Task": "Advanced Influencer Marketing Webinar Series", "Type": "Premium"},
+        {"Task": "Compliance Masterclass", "Type": "Premium"}
     ]
 
-    # Extend the calendar tasks to 30 days
-    calendar_tasks.extend([""] * (30 - len(calendar_tasks)))
+    # Extend the tasks to fill 30 days if needed
+    while len(calendar_tasks) < 30:
+        calendar_tasks.append({"Task": "", "Type": ""})
 
-    # Create DataFrame for calendar
-    calendar_df = pd.DataFrame({"Date": dates, "Task": calendar_tasks})
+    # Create DataFrame for the calendar
+    calendar_df = pd.DataFrame({"Date": dates, "Task": [t["Task"] for t in calendar_tasks], "Type": [t["Type"] for t in calendar_tasks]})
     
     # Display the calendar
     st.dataframe(calendar_df, use_container_width=True)
