@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
 
-# Simulated data for content ideas
+# Simulated data for content ideas with pricing
 def load_data():
     data = pd.DataFrame({
-        "Index": range(1, 15),
+        "Index": range(1, 16),
         "Title": [
             # Freemium Content
             "10 Influencer Marketing Terms You Need to Know",
@@ -56,13 +56,15 @@ def load_data():
             "International Regulations, FTC Guidelines",
             "Sustaining Influencer Partnerships"
         ],
-        "Delivery Format": [
+        "Delivery_Format": [
             # Delivery Formats
             "Infographic (Canva Design)", "Interactive Checklist (PDF)", "Guide (PDF)",
             "Blog Post (Quick Read)", "Template (Downloadable PDF)",
             "Whitepaper (Downloadable)", "Quick Article", "Budget Guide (PDF)",
-            "Masterclass (Video Series)", "Video Series", "E-book (PDF)", "Interactive Webinar",
-            "Case Study Video Series", "Online Course (Certification)", "Workshop (Workbook)"
+            "Masterclass (Video Series)", "Video Series",
+            "E-book (PDF, $199)", "Interactive Webinar, $299",
+            "Case Study Video Series, $249", "Online Course (Certification), $349",
+            "Workshop (Workbook), $399"
         ],
         "Completed": [False] * 15
     })
@@ -120,7 +122,7 @@ if section == "Freemium Content":
         with st.expander(f"📋 {row['Title']}"):
             st.write(f"**Subheadings**: {row['Subheadings']}")
             st.write(f"**Notes/Angles**: {row['Notes_Angles']}")
-            st.write(f"**Best Delivery Format**: {row['Delivery Format']}")
+            st.write(f"**Best Delivery Format**: {row['Delivery_Format']}")
             st.checkbox("Completed", value=row["Completed"], key=f"task_freemium_{index}", on_change=toggle_task_status, args=(index,))
 
 # Premium Content Section
@@ -135,7 +137,7 @@ elif section == "Premium Content":
         with st.expander(f"🌟 {row['Title']}"):
             st.write(f"**Subheadings**: {row['Subheadings']}")
             st.write(f"**Notes/Angles**: {row['Notes_Angles']}")
-            st.write(f"**Best Delivery Format**: {row['Delivery Format']}")
+            st.write(f"**Best Delivery Format & Pricing**: {row['Delivery_Format']}")
             st.checkbox("Completed", value=row["Completed"], key=f"task_premium_{index}", on_change=toggle_task_status, args=(index,))
 
 # Content Calendar Section
@@ -190,10 +192,4 @@ elif section == "Courses":
         {"Title": "Influencer Marketing Masterclass", "Description": "Advanced strategies for building long-term relationships and measuring ROI."}
     ]
     for course in courses:
-        with st.expander(f"📘 {course['Title']}"):
-            st.write(course["Description"])
-
-# Footer
-st.write("---")
-st.write("Ready to transform your marketing strategy? Start your RippleXp journey today.")
-st.button("Contact Us for a Free Consultation")
+        with st.expander(f"📘 {course['Title']}
