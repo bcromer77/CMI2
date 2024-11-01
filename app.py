@@ -17,7 +17,7 @@ if section == "Content Ideas":
     st.header("Content Ideas")
     st.write("Here you can manage your content ideas with task statuses.")
 
-    # Creating the content table with checkboxes
+    # Creating the content table with toggles
     content_data = [
         {
             "Content Type": "Freemium",
@@ -26,7 +26,7 @@ if section == "Content Ideas":
             "SEO Keywords": "What is influencer marketing, Influencer marketing for tourism",
             "Call to Action": "Download the guide",
             "Related Premium Content": "Masterclass: Influencer Strategy for Municipal Tourism",
-            "Status": st.checkbox("Done", key="task1")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task1")
         },
         {
             "Content Type": "Freemium",
@@ -35,7 +35,7 @@ if section == "Content Ideas":
             "SEO Keywords": "Influencer selection checklist, How to choose influencers",
             "Call to Action": "Download the checklist",
             "Related Premium Content": "Influencer Vetting Toolkit",
-            "Status": st.checkbox("Done", key="task2")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task2")
         },
         {
             "Content Type": "Freemium",
@@ -44,7 +44,7 @@ if section == "Content Ideas":
             "SEO Keywords": "Influencer red flags, Mistakes in influencer marketing",
             "Call to Action": "Subscribe for more tips",
             "Related Premium Content": "Guide to Influencer Contracts",
-            "Status": st.checkbox("In Progress", key="task3")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task3")
         },
         {
             "Content Type": "Premium",
@@ -53,7 +53,7 @@ if section == "Content Ideas":
             "SEO Keywords": "Advanced influencer marketing, Tourism strategy masterclass",
             "Call to Action": "Enroll Now",
             "Related Premium Content": "Custom Consultation",
-            "Status": st.checkbox("Pending", key="task4")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task4")
         },
         {
             "Content Type": "Premium",
@@ -62,7 +62,7 @@ if section == "Content Ideas":
             "SEO Keywords": "Vetting influencers, Influencer matching system",
             "Call to Action": "Purchase Toolkit",
             "Related Premium Content": "Advanced Analytics Suite",
-            "Status": st.checkbox("Pending", key="task5")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task5")
         }
     ]
 
@@ -73,7 +73,8 @@ if section == "Content Ideas":
         st.write(f"**SEO Keywords:** {item['SEO Keywords']}")
         st.write(f"**Call to Action:** {item['Call to Action']}")
         st.write(f"**Related Premium Content:** {item['Related Premium Content']}")
-        st.write(f"**Status:** {'✔️ Completed' if item['Status'] else '❌ Not Completed'}")
+        st.write(f"**Status:** {'✔️ Completed' if item['Status'] == 'Completed' else '❌ Not Completed'}")
         st.markdown("---")
+
 
 
