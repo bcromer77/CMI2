@@ -207,6 +207,5 @@ elif section == "Courses":
         """)
 
     # Footer CTA
-    st.write("---")
-    st.write("Ready
-
+  st.write("Ready to secure your brand’s reputation? Start your RippleXp journey and prepare for RippleXn’s comprehensive monitoring services.")
+st.button("Contact Us for a Free Consultation")
