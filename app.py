@@ -1,82 +1,101 @@
 import streamlit as st
+import pandas as pd
 from datetime import datetime, timedelta
+
+# Load and clean data
+@st.cache_data
+def load_data():
+    file_path = 'CMI_content_ideas.xlsx'
+    data = pd.read_excel(file_path, skiprows=2, header=1)
+    data.columns = ["Index", "Number", "Title", "Subheadings", "Notes_Angles"]
+    data = data.dropna(subset=["Number", "Title"]).reset_index(drop=True)
+    data["Completed"] = False  # Initialize a 'Completed' column
+    
+    # Categorize content based on a predefined list
+    freemium_titles = [
+        "10 Influencer Marketing Terms You Need to Know",
+        "How to Identify the Right Influencer for Your Brand",
+        "Step-by-Step: Launching Your First Influencer Campaign",
+        "Why Every Marketer Should Care About Influencer Marketing",
+        "Crafting the Perfect Influencer Brief",
+        "The Ethics of Influencer Marketing",
+        "5 Common Influencer Marketing Mistakes to Avoid",
+        "Influencer Marketing on a Budget: Tips for Small Brands"
+    ]
+    
+    data["Category"] = data["Title"].apply(
+        lambda x: "Freemium" if x in freemium_titles else "Premium"
+    )
+    return data
+
+# Function to toggle task status
+def toggle_task_status(index):
+    st.session_state["content_data"].at[index, "Completed"] = not st.session_state["content_data"].at[index, "Completed"]
+
+# Initialize or load data into the session state
+if "content_data" not in st.session_state:
+    st.session_state["content_data"] = load_data()
 
 # Page Configuration
 st.set_page_config(page_title="CMI Content Management Dashboard", layout="wide")
 
-# Home Page Title
+# Title and Description
 st.title("CMI Content Management Dashboard")
-st.subheader("Manage your content ideas efficiently.")
+st.subheader("Manage your content ideas efficiently and plan for November.")
 
 # Sidebar Navigation
 section = st.sidebar.radio("Go to:", [
     "Home",
-    "Content Ideas",
+    "Freemium Content",
     "Premium Content",
     "Content Calendar",
-    "Viral Strategies",
-    "SEO Strategy",
-    "Notes & To-Do",
-    "Links & Resources",
     "Course Tutors",
     "Courses"
 ])
-# Content Ideas Section
-if section == "Content Ideas":
-    st.header("Content Ideas")
-    st.write("Manage your content ideas and track their completion status.")
-    content_ideas = [
-        {"Title": "Beginner’s Guide to Influencer Marketing", "Description": "A simple guide to understanding influencer marketing for tourism.", "Completed": False, "Key": "task_guide", "Status": "❌ Not Completed"},
-        {"Title": "Checklist for Influencer Selection", "Description": "A detailed checklist to help choose the right influencers.", "Completed": False, "Key": "task_checklist", "Status": "❌ Not Completed"},
-        {"Title": "Top 10 Red Flags to Avoid", "Description": "Highlights common mistakes when working with influencers.", "Completed": False, "Key": "task_red_flags", "Status": "❌ Not Completed"},
-        {"Title": "Content Calendar Template", "Description": "A downloadable content calendar template for planning influencer campaigns.", "Completed": False, "Key": "task_calendar", "Status": "❌ Not Completed"},
-        {"Title": "Mini Case Study Series", "Description": "Short success stories of effective influencer marketing campaigns.", "Completed": False, "Key": "task_case_studies", "Status": "❌ Not Completed"},
-        {"Title": "Influencer Contract Basics", "Description": "A guide explaining the essentials of influencer contracts.", "Completed": False, "Key": "task_contract_basics", "Status": "❌ Not Completed"},
-        {"Title": "Webinar: Influencer Marketing 101", "Description": "A free webinar covering the basics of influencer marketing.", "Completed": False, "Key": "task_webinar", "Status": "❌ Not Completed"},
-        {"Title": "Social Media Compliance Infographic", "Description": "An easy-to-understand infographic on social media compliance rules.", "Completed": False, "Key": "task_infographic", "Status": "❌ Not Completed"}
-    ]
-    render_task_table(content_ideas)
+
+# Freemium Content Section
+if section == "Freemium Content":
+    st.header("Freemium Content")
+    st.write("Manage your freemium content ideas and track their completion status.")
+    st.markdown("---")
+
+    # Filter and display freemium content
+    freemium_content = st.session_state["content_data"][st.session_state["content_data"]["Category"] == "Freemium"]
+    for index, row in freemium_content.iterrows():
+        with st.expander(f"📋 {row['Title']}"):
+            st.write(f"**Subheadings**: {row['Subheadings']}")
+            st.write(f"**Notes/Angles**: {row['Notes_Angles']}")
+            st.checkbox("Completed", value=row["Completed"], key=f"task_freemium_{index}", on_change=toggle_task_status, args=(index,))
 
 # Premium Content Section
 elif section == "Premium Content":
     st.header("Premium Content")
-    st.write("Manage your premium content strategies and track their completion status.")
-    premium_content = [
-        {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Description": "In-depth training on crafting effective influencer strategies.", "Completed": False, "Key": "task_masterclass", "Status": "❌ Not Completed"},
-        {"Title": "Influencer Vetting Toolkit", "Description": "Comprehensive tools for vetting and matching influencers.", "Completed": False, "Key": "task_vetting_toolkit", "Status": "❌ Not Completed"},
-        {"Title": "Guide to Influencer Contracts", "Description": "Detailed guidance on creating and managing influencer contracts.", "Completed": False, "Key": "task_influencer_contracts", "Status": "❌ Not Completed"},
-        {"Title": "Content Strategy Workshop", "Description": "Interactive workshop to build a strong content strategy.", "Completed": False, "Key": "task_content_strategy", "Status": "❌ Not Completed"},
-        {"Title": "Full Case Study Library", "Description": "Access a library of full case studies for in-depth learning.", "Completed": False, "Key": "task_case_library", "Status": "❌ Not Completed"},
-        {"Title": "Influencer Legal Toolkit", "Description": "All-in-one legal toolkit for influencer marketing compliance.", "Completed": False, "Key": "task_legal_toolkit", "Status": "❌ Not Completed"},
-        {"Title": "Advanced Influencer Marketing Webinar Series", "Description": "Series of advanced webinars covering influencer marketing strategies.", "Completed": False, "Key": "task_advanced_webinar", "Status": "❌ Not Completed"}
-    ]
-    render_task_table(premium_content)
+    st.write("Manage your premium content ideas and track their completion status.")
+    st.markdown("---")
+
+    # Filter and display premium content
+    premium_content = st.session_state["content_data"][st.session_state["content_data"]["Category"] == "Premium"]
+    for index, row in premium_content.iterrows():
+        with st.expander(f"🌟 {row['Title']}"):
+            st.write(f"**Subheadings**: {row['Subheadings']}")
+            st.write(f"**Notes/Angles**: {row['Notes_Angles']}")
+            st.checkbox("Completed", value=row["Completed"], key=f"task_premium_{index}", on_change=toggle_task_status, args=(index,))
 
 # Content Calendar Section
 elif section == "Content Calendar":
-    st.header("Content Calendar")
-    st.write("Plan and manage your content efficiently.")
-    start_date = datetime.today()
-    dates = [start_date + timedelta(days=i) for i in range(30)]
-    tasks = [
-        "Beginner’s Guide to Influencer Marketing",
-        "Checklist for Influencer Selection",
-        "Top 10 Red Flags to Avoid",
-        "Content Calendar Template",
-        "Mini Case Study Series",
-        "Influencer Contract Basics",
-        "Webinar: Influencer Marketing 101",
-        "Social Media Compliance Infographic",
-        "Masterclass: Influencer Strategy for Municipal Tourism",
-        "Influencer Vetting Toolkit",
-        "Guide to Influencer Contracts",
-        "Content Strategy Workshop",
-        "Full Case Study Library",
-        "Influencer Legal Toolkit",
-        "Advanced Influencer Marketing Webinar Series"
-    ]
-    task_types = ["Freemium"] * 8 + ["Premium"] * 7
-    calendar_df = pd.DataFrame({"Date": dates[:len(tasks)], "Task": tasks, "Type": task_types})
+    st.header("Content Calendar for November")
+    st.write("Plan and manage your content push for the month of November.")
+    st.markdown("---")
+
+    # Generate a calendar for November, assigning dates to content ideas
+    start_date = datetime(2024, 11, 1)
+    dates = [start_date + timedelta(days=i) for i in range(len(st.session_state["content_data"]))]
+    calendar_df = pd.DataFrame({
+        "Date": dates[:len(st.session_state["content_data"])],
+        "Task": st.session_state["content_data"]["Title"],
+        "Category": st.session_state["content_data"]["Category"],
+        "Completed": st.session_state["content_data"]["Completed"]
+    })
     st.dataframe(calendar_df, use_container_width=True)
 
 # Section: Viral Strategies
