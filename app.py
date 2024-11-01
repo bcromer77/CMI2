@@ -67,7 +67,8 @@ elif section == "Course Tutors":
     # Building Confidence
     col1, col2 = st.columns([1, 3])
     with col1:
-        st.image("path_to_kay_image.jpg", use_column_width=True)  # Replace with the actual image path
+        # st.image("path_to_kay_image.jpg", use_column_width=True)  # Uncomment and replace with a valid image path
+        pass
     with col2:
         st.subheader("Building Confidence")
         st.write("**Instructor:** Kay Munday")
@@ -78,7 +79,8 @@ elif section == "Course Tutors":
     # Storytelling Narrative
     col1, col2 = st.columns([1, 3])
     with col1:
-        st.image("path_to_james_image.jpg", use_column_width=True)  # Replace with the actual image path
+        # st.image("path_to_james_image.jpg", use_column_width=True)  # Uncomment and replace with a valid image path
+        pass
     with col2:
         st.subheader("Storytelling Narrative")
         st.write("**Instructor:** Dr. James McCabe")
@@ -89,7 +91,8 @@ elif section == "Course Tutors":
     # Rhetoric
     col1, col2 = st.columns([1, 3])
     with col1:
-        st.image("path_to_brian_image.jpg", use_column_width=True)  # Replace with the actual image path
+        # st.image("path_to_brian_image.jpg", use_column_width=True)  # Uncomment and replace with a valid image path
+        pass
     with col2:
         st.subheader("Rhetoric")
         st.write("**Instructor:** Brian Jenner")
