@@ -74,7 +74,7 @@ if section == "Content Ideas":
             "SEO Keywords": "Content calendar template, Influencer marketing planner",
             "Call to Action": "Download the template",
             "Related Premium Content": "Content Strategy Workshop",
-            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task6")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task4")
         },
         {
             "Content Type": "Freemium",
@@ -83,7 +83,7 @@ if section == "Content Ideas":
             "SEO Keywords": "Influencer case studies, Marketing success stories",
             "Call to Action": "Read the case studies",
             "Related Premium Content": "Full Case Study Library",
-            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task7")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task5")
         },
         {
             "Content Type": "Freemium",
@@ -92,7 +92,7 @@ if section == "Content Ideas":
             "SEO Keywords": "Influencer contract basics, Legal guide for influencer marketing",
             "Call to Action": "Download the guide",
             "Related Premium Content": "Influencer Legal Toolkit",
-            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task8")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task6")
         },
         {
             "Content Type": "Freemium",
@@ -101,7 +101,7 @@ if section == "Content Ideas":
             "SEO Keywords": "Influencer marketing webinar, Beginner's guide to influencer marketing",
             "Call to Action": "Register for the webinar",
             "Related Premium Content": "Advanced Influencer Marketing Webinar Series",
-            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task9")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task7")
         },
         {
             "Content Type": "Freemium",
@@ -110,7 +110,7 @@ if section == "Content Ideas":
             "SEO Keywords": "Social media compliance, Influencer marketing infographic",
             "Call to Action": "Share the infographic",
             "Related Premium Content": "Compliance Masterclass",
-            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task10")
+            "Status": st.selectbox("Status", ["Not Completed", "Completed"], key="task8")
         }
     ]
 
@@ -135,15 +135,23 @@ if section == "Content Calendar":
     st.write("Plan and manage your content with our content calendar.")
 
     # Generate a calendar starting from November 4th for 30 days
-    start_date = pd.Timestamp("2024-11-04")
-    dates = [start_date + pd.Timedelta(days=i) for i in range(30)]
-    calendar_tasks = [""] * 30
+    start_date = datetime(2024, 11, 4)
+    dates = [start_date + timedelta(days=i) for i in range(30)]
+    calendar_tasks = [
+        "Beginner’s Guide to Influencer Marketing",
+        "Checklist for Influencer Selection",
+        "Top 10 Red Flags to Avoid",
+        "Content Calendar Template",
+        "Mini Case Study Series",
+        "Influencer Contract Basics",
+        "Webinar: Influencer Marketing 101",
+        "Social Media Compliance Infographic"
+    ] + [""] * (30 - len(calendar_tasks))
     calendar_df = pd.DataFrame({"Date": dates, "Task": calendar_tasks})
     
     # Display the content calendar using a simple dataframe
     st.dataframe(calendar_df, use_container_width=True)
     st.write("Note: You can update the tasks manually in your personal copy.")
-
 
 # Viral Strategies Section
 if section == "Viral Strategies":
@@ -166,6 +174,7 @@ if section == "Notes & To-Do":
 if section == "Links & Resources":
     st.header("Links & Resources")
     st.write("Access useful links and resources for influencer marketing.")
+
 
 
 
