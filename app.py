@@ -30,7 +30,7 @@ st.sidebar.markdown("[Influencer Contract Basics](#influencer-contract-basics)",
 st.sidebar.markdown("[Webinar: Influencer Marketing 101](#webinar-influencer-marketing-101)", unsafe_allow_html=True)
 st.sidebar.markdown("[Social Media Compliance Infographic](#social-media-compliance-infographic)", unsafe_allow_html=True)
 
-# Improved Checklist Section for Freemium and Premium Content
+# Function to display content checklists
 def display_content_checklist(content_data):
     for item in content_data:
         completed = st.checkbox(f"{item['Title']} - {'✔️ Completed' if item['Status'] == 'Completed' else '❌ Not Completed'}", value=item['Status'] == "Completed")
@@ -39,9 +39,8 @@ def display_content_checklist(content_data):
         else:
             item['Status'] = "Not Completed"
 
-# Content Data
-content_data = [
-    # Freemium Content
+# Content Data for Freemium and Premium
+freemium_content_data = [
     {"Title": "Beginner’s Guide to Influencer Marketing", "Status": "Not Completed"},
     {"Title": "Checklist for Influencer Selection", "Status": "Not Completed"},
     {"Title": "Top 10 Red Flags to Avoid", "Status": "Not Completed"},
@@ -49,41 +48,46 @@ content_data = [
     {"Title": "Mini Case Study Series", "Status": "Not Completed"},
     {"Title": "Influencer Contract Basics", "Status": "Not Completed"},
     {"Title": "Webinar: Influencer Marketing 101", "Status": "Not Completed"},
-    {"Title": "Social Media Compliance Infographic", "Status": "Not Completed"},
-    # Premium Content
+    {"Title": "Social Media Compliance Infographic", "Status": "Not Completed"}
+]
+
+premium_content_data = [
     {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Status": "Not Completed"},
     {"Title": "Influencer Vetting Toolkit", "Status": "Not Completed"},
     {"Title": "Guide to Influencer Contracts", "Status": "Not Completed"},
     {"Title": "Content Strategy Workshop", "Status": "Not Completed"},
     {"Title": "Full Case Study Library", "Status": "Not Completed"},
     {"Title": "Influencer Legal Toolkit", "Status": "Not Completed"},
-    {"Title": "Advanced Influencer Marketing Webinar Series", "Status": "Not Completed"},
+    {"Title": "Advanced Influencer Marketing Webinar Series", "Status": "Not Completed"}
 ]
 
 # Main Content
 if section == "Content Ideas":
     st.header("Content Ideas")
     st.write("Here you can manage your content ideas with task statuses.")
-    display_content_checklist(content_data)
+    display_content_checklist(freemium_content_data)
 
 # Premium Content Section
 if section == "Premium Content":
     st.header("Premium Content")
     st.write("Manage your premium content strategies here.")
-    display_content_checklist([item for item in content_data if "Premium" in item['Title']])
+    display_content_checklist(premium_content_data)
 
 # Content Calendar Section
 if section == "Content Calendar":
     st.header("Content Calendar")
     st.write("Plan and manage your content with our content calendar.")
 
-    # Generate a calendar starting from November 4th for all tasks
+    # Generate a calendar with both freemium and premium content
     start_date = pd.Timestamp("2024-11-04")
-    dates = [start_date + pd.Timedelta(days=i) for i in range(len(content_data))]
+    dates = [start_date + pd.Timedelta(days=i) for i in range(len(freemium_content_data) + len(premium_content_data))]
+    tasks = [item['Title'] for item in freemium_content_data + premium_content_data]
+    types = ["Freemium"] * len(freemium_content_data) + ["Premium"] * len(premium_content_data)
+
     calendar_df = pd.DataFrame({
         "Date": dates,
-        "Task": [item['Title'] for item in content_data],
-        "Type": ["Freemium" if "Freemium" in item['Title'] else "Premium" for item in content_data]
+        "Task": tasks,
+        "Type": types
     })
     
     # Display the content calendar
@@ -110,7 +114,6 @@ if section == "Notes & To-Do":
 if section == "Links & Resources":
     st.header("Links & Resources")
     st.write("Access useful links and resources for influencer marketing.")
-
 
 
 
