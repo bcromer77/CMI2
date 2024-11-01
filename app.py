@@ -3,10 +3,10 @@ import pandas as pd
 from datetime import datetime, timedelta
 
 # Page Configuration
-st.set_page_config(page_title="RippleXp Content Management Dashboard", layout="wide")
+st.set_page_config(page_title="CMI Content Management Dashboard", layout="wide")
 
 # Home Page Title
-st.title("RippleXp Content Management Dashboard")
+st.title("CMI Content Management Dashboard")
 st.subheader("Manage your content ideas efficiently.")
 
 # Sidebar Navigation
@@ -19,7 +19,8 @@ section = st.sidebar.radio("Go to:", [
     "Viral Strategies",
     "SEO Strategy",
     "Notes & To-Do",
-    "Links & Resources"
+    "Links & Resources",
+    "Course Tutors"
 ])
 
 # Sidebar Links for Freemium Content Ideas
@@ -30,73 +31,80 @@ st.sidebar.markdown("[Influencer Contract Basics](#influencer-contract-basics)",
 st.sidebar.markdown("[Webinar: Influencer Marketing 101](#webinar-influencer-marketing-101)", unsafe_allow_html=True)
 st.sidebar.markdown("[Social Media Compliance Infographic](#social-media-compliance-infographic)", unsafe_allow_html=True)
 
-# Function to display content checklists
-def display_content_checklist(content_data):
-    for item in content_data:
-        is_completed = st.checkbox(f"{item['Title']}", value=item['Status'] == "Completed")
-        if is_completed:
-            item['Status'] = "Completed"
-        else:
-            item['Status'] = "Not Completed"
-        st.write(f"Status: {'✔️ Completed' if item['Status'] == 'Completed' else '❌ Not Completed'}")
-        st.markdown("---")
-
-# Content Data for Freemium and Premium
-freemium_content_data = [
-    {"Title": "Beginner’s Guide to Influencer Marketing", "Status": "Not Completed"},
-    {"Title": "Checklist for Influencer Selection", "Status": "Not Completed"},
-    {"Title": "Top 10 Red Flags to Avoid", "Status": "Not Completed"},
-    {"Title": "Content Calendar Template", "Status": "Not Completed"},
-    {"Title": "Mini Case Study Series", "Status": "Not Completed"},
-    {"Title": "Influencer Contract Basics", "Status": "Not Completed"},
-    {"Title": "Webinar: Influencer Marketing 101", "Status": "Not Completed"},
-    {"Title": "Social Media Compliance Infographic", "Status": "Not Completed"}
-]
-
-premium_content_data = [
-    {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Status": "Not Completed"},
-    {"Title": "Influencer Vetting Toolkit", "Status": "Not Completed"},
-    {"Title": "Guide to Influencer Contracts", "Status": "Not Completed"},
-    {"Title": "Content Strategy Workshop", "Status": "Not Completed"},
-    {"Title": "Full Case Study Library", "Status": "Not Completed"},
-    {"Title": "Influencer Legal Toolkit", "Status": "Not Completed"},
-    {"Title": "Advanced Influencer Marketing Webinar Series", "Status": "Not Completed"}
-]
-
-# Main Content
+# Main Content Sections
 if section == "Content Ideas":
     st.header("Content Ideas")
     st.write("Here you can manage your content ideas with task statuses.")
-    display_content_checklist(freemium_content_data)
 
-# Premium Content Section
+    # Example Freemium Content List
+    freemium_content = [
+        {"Title": "Beginner’s Guide to Influencer Marketing", "Status": False},
+        {"Title": "Checklist for Influencer Selection", "Status": False},
+        {"Title": "Top 10 Red Flags to Avoid", "Status": False},
+        {"Title": "Content Calendar Template", "Status": False},
+        {"Title": "Mini Case Study Series", "Status": False},
+        {"Title": "Influencer Contract Basics", "Status": False},
+        {"Title": "Webinar: Influencer Marketing 101", "Status": False},
+        {"Title": "Social Media Compliance Infographic", "Status": False},
+    ]
+
+    # Display content list with checkboxes
+    for item in freemium_content:
+        item["Status"] = st.checkbox(item["Title"], value=item["Status"])
+        st.write(f"Status: {'✔️ Completed' if item['Status'] else '❌ Not Completed'}")
+        st.markdown("---")
+
 if section == "Premium Content":
     st.header("Premium Content")
     st.write("Manage your premium content strategies here.")
-    display_content_checklist(premium_content_data)
 
-# Content Calendar Section
+    # Example Premium Content List
+    premium_content = [
+        {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Status": False},
+        {"Title": "Influencer Vetting Toolkit", "Status": False},
+        {"Title": "Guide to Influencer Contracts", "Status": False},
+        {"Title": "Content Strategy Workshop", "Status": False},
+        {"Title": "Full Case Study Library", "Status": False},
+        {"Title": "Influencer Legal Toolkit", "Status": False},
+        {"Title": "Advanced Influencer Marketing Webinar Series", "Status": False},
+    ]
+
+    # Display content list with checkboxes
+    for item in premium_content:
+        item["Status"] = st.checkbox(item["Title"], value=item["Status"])
+        st.write(f"Status: {'✔️ Completed' if item['Status'] else '❌ Not Completed'}")
+        st.markdown("---")
+
 if section == "Content Calendar":
     st.header("Content Calendar")
     st.write("Plan and manage your content with our content calendar.")
 
-    # Generate a calendar with both freemium and premium content
+    # Generate a calendar starting from November 4th for 30 days
     start_date = pd.Timestamp("2024-11-04")
-    dates = [start_date + pd.Timedelta(days=i) for i in range(len(freemium_content_data) + len(premium_content_data))]
-    tasks = [item['Title'] for item in freemium_content_data + premium_content_data]
-    types = ["Freemium"] * len(freemium_content_data) + ["Premium"] * len(premium_content_data)
+    dates = [start_date + pd.Timedelta(days=i) for i in range(30)]
+    calendar_tasks = [
+        "Beginner’s Guide to Influencer Marketing",
+        "Checklist for Influencer Selection",
+        "Top 10 Red Flags to Avoid",
+        "Content Calendar Template",
+        "Mini Case Study Series",
+        "Influencer Contract Basics",
+        "Webinar: Influencer Marketing 101",
+        "Social Media Compliance Infographic",
+        "Masterclass: Influencer Strategy for Municipal Tourism",
+        "Influencer Vetting Toolkit",
+        "Guide to Influencer Contracts",
+        "Content Strategy Workshop",
+        "Full Case Study Library",
+        "Influencer Legal Toolkit",
+        "Advanced Influencer Marketing Webinar Series"
+    ]
+    types = ["Freemium"] * 8 + ["Premium"] * 7
+    calendar_df = pd.DataFrame({"Date": dates[:len(calendar_tasks)], "Task": calendar_tasks, "Type": types})
 
-    calendar_df = pd.DataFrame({
-        "Date": dates,
-        "Task": tasks,
-        "Type": types
-    })
-    
-    # Display the content calendar
     st.dataframe(calendar_df, use_container_width=True)
     st.write("Note: You can update the tasks manually in your personal copy.")
 
-# Additional Sections
 if section == "Viral Strategies":
     st.header("Strategies to Make Content Go Viral")
     st.write("1. **Utilize Hashtags**: Research trending hashtags for influencer marketing.")
@@ -117,6 +125,32 @@ if section == "Links & Resources":
     st.header("Links & Resources")
     st.write("Access useful links and resources for influencer marketing.")
 
+# New Course Tutors Section
+if section == "Course Tutors":
+    st.header("Course Tutors")
+    st.write("Learn from our expert speakers:")
+    st.write("**Building Confidence** - Kay Munday")
+    st.write("**Storytelling Narrative** - Dr. James McCabe")
+    st.write("**Rhetoric** - Brian Jenner")
+
+# Aesthetic Enhancements
+# Use custom colors and fonts
+st.markdown(
+    """
+    <style>
+    .main {
+        background-color: #f8f9fa;
+        color: #343a40;
+        font-family: "Arial", sans-serif;
+    }
+    .sidebar .sidebar-content {
+        background-color: #343a40;
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 
 
