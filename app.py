@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 
 # Page Configuration
-st.set_page_config(page_title="RippleXp Content Management Dashboard", layout="wide")
+st.set_page_config(page_title="CMI Content Management Dashboard", layout="wide")
 
 # Home Page Title
 st.title("RippleXp Content Management Dashboard")
