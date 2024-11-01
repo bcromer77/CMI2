@@ -4,7 +4,11 @@ from datetime import datetime, timedelta
 # Safely access the 'Delivery Format' column using .get() to avoid KeyError
 delivery_format = row.get('Delivery Format', 'N/A')
 st.write(f"**Best Delivery Format & Pricing**: {delivery_format}")
-
+# Assuming you have a DataFrame named 'df'
+for index, row in df.iterrows():
+    # Safely access the 'Delivery Format' column using .get() to avoid KeyError
+    delivery_format = row.get('Delivery Format', 'N/A')
+    st.write(f"**Best Delivery Format & Pricing**: {delivery_format}")
 # Simulated data for content ideas with pricing
 def load_data():
     data = pd.DataFrame({
