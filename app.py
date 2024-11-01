@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from datetime import datetime, timedelta
 
 # Page Configuration
 st.set_page_config(page_title="RippleXp Content Management Dashboard", layout="wide")
@@ -15,6 +16,7 @@ section = st.sidebar.radio("Go to:", [
     "Content Ideas",
     "Premium Content",
     "Content Calendar",
+    "Viral Strategies",
     "SEO Strategy",
     "Notes & To-Do",
     "Links & Resources"
@@ -122,15 +124,34 @@ if section == "Content Ideas":
         st.write(f"**Status:** {'✔️ Completed' if item['Status'] == 'Completed' else '❌ Not Completed'}")
         st.markdown("---")
 
-# Additional Sections
+# Premium Content Section
 if section == "Premium Content":
     st.header("Premium Content")
     st.write("Manage your premium content strategies here.")
 
+# Content Calendar Section
 if section == "Content Calendar":
     st.header("Content Calendar")
     st.write("Plan and manage your content with our content calendar.")
 
+    # Generate a calendar starting from November 4th for 30 days
+    start_date = pd.Timestamp("2024-11-04")
+    dates = [start_date + pd.Timedelta(days=i) for i in range(30)]
+    calendar_tasks = [""] * 30
+    calendar_df = pd.DataFrame({"Date": dates, "Task": calendar_tasks})
+    calendar_df = st.experimental_data_editor(calendar_df, use_container_width=True)
+    st.write("Update your daily tasks directly in the table.")
+
+# Viral Strategies Section
+if section == "Viral Strategies":
+    st.header("Strategies to Make Content Go Viral")
+    st.write("1. **Utilize Hashtags**: Research trending hashtags for influencer marketing.")
+    st.write("2. **Collaborate with Micro-Influencers**: Offer them your freemium content to share with their audience.")
+    st.write("3. **Run Contests or Giveaways**: Encourage followers to share your content for a chance to win a premium resource.")
+    st.write("4. **Create Interactive Content**: Use polls and quizzes on Instagram Stories and LinkedIn to engage your audience.")
+    st.write("5. **Email Marketing**: Send updates to your subscribers about new content and encourage them to share with their network.")
+
+# Additional Sections
 if section == "SEO Strategy":
     st.header("SEO Strategy")
     st.write("Plan your SEO strategy to maximize reach.")
@@ -142,14 +163,6 @@ if section == "Notes & To-Do":
 if section == "Links & Resources":
     st.header("Links & Resources")
     st.write("Access useful links and resources for influencer marketing.")
-
-# Add strategies to make content go viral
-st.subheader("Strategies to Make Content Go Viral")
-st.write("1. **Utilize Hashtags**: Research trending hashtags for influencer marketing.")
-st.write("2. **Collaborate with Micro-Influencers**: Offer them your freemium content to share with their audience.")
-st.write("3. **Run Contests or Giveaways**: Encourage followers to share your content for a chance to win a premium resource.")
-st.write("4. **Create Interactive Content**: Use polls and quizzes on Instagram Stories and LinkedIn to engage your audience.")
-st.write("5. **Email Marketing**: Send updates to your subscribers about new content and encourage them to share with their network.")
 
 
 
