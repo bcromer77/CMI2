@@ -258,7 +258,8 @@ elif section == "Courses":
         "Entry-Level Products",
         "Advanced Options",
         "Commercialization & Off-the-Shelf Products",
-        "Crisis Identification Stages"
+        "Crisis Identification Stages",
+        "Course Assessment"  # Make sure this is included
     ])
 
     # Content for Each Subsection
@@ -358,7 +359,19 @@ elif section == "Courses":
         """)
         st.button("Contact Us for a Free Consultation", key="button_crisis_stages")
 
+    elif course_section == "Course Assessment":
+        st.header("Course Assessment - Customized Recommendations")
+        st.write("""
+            Our assessment tool helps clients identify the most relevant RippleXp courses based on their brand's unique needs, 
+            guiding them seamlessly into the RippleXn ecosystem.
+        """)
+        st.subheader("Choose Your Path:")
+        st.write("""
+            - **Introductory Assessment**: Determine your starting point.
+            - **Advanced Analysis**: For brands needing immediate intervention.
+        """)
+        st.button("Contact Us for a Free Consultation", key="button_course_assessment")
+
 # Footer (optional)
 st.write("---")
 st.write("Ready to transform your marketing strategy? Start your RippleXp journey today.")
-
