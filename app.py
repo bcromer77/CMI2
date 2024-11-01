@@ -24,17 +24,60 @@ section = st.sidebar.radio("Go to:", [
 # Content Ideas Section
 if section == "Content Ideas":
     st.header("Content Ideas")
-    st.write("Add your Content Ideas code or features here.")
+    st.write("Manage your content ideas and track their completion status.")
+    content_ideas = [
+        {"Title": "Beginner’s Guide to Influencer Marketing", "Description": "A simple guide to understanding influencer marketing for tourism.", "Completed": False, "Key": "task_guide", "Status": "❌ Not Completed"},
+        {"Title": "Checklist for Influencer Selection", "Description": "A detailed checklist to help choose the right influencers.", "Completed": False, "Key": "task_checklist", "Status": "❌ Not Completed"},
+        {"Title": "Top 10 Red Flags to Avoid", "Description": "Highlights common mistakes when working with influencers.", "Completed": False, "Key": "task_red_flags", "Status": "❌ Not Completed"},
+        {"Title": "Content Calendar Template", "Description": "A downloadable content calendar template for planning influencer campaigns.", "Completed": False, "Key": "task_calendar", "Status": "❌ Not Completed"},
+        {"Title": "Mini Case Study Series", "Description": "Short success stories of effective influencer marketing campaigns.", "Completed": False, "Key": "task_case_studies", "Status": "❌ Not Completed"},
+        {"Title": "Influencer Contract Basics", "Description": "A guide explaining the essentials of influencer contracts.", "Completed": False, "Key": "task_contract_basics", "Status": "❌ Not Completed"},
+        {"Title": "Webinar: Influencer Marketing 101", "Description": "A free webinar covering the basics of influencer marketing.", "Completed": False, "Key": "task_webinar", "Status": "❌ Not Completed"},
+        {"Title": "Social Media Compliance Infographic", "Description": "An easy-to-understand infographic on social media compliance rules.", "Completed": False, "Key": "task_infographic", "Status": "❌ Not Completed"}
+    ]
+    render_task_table(content_ideas)
 
 # Premium Content Section
 elif section == "Premium Content":
     st.header("Premium Content")
-    st.write("Add your Premium Content code or features here.")
+    st.write("Manage your premium content strategies and track their completion status.")
+    premium_content = [
+        {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Description": "In-depth training on crafting effective influencer strategies.", "Completed": False, "Key": "task_masterclass", "Status": "❌ Not Completed"},
+        {"Title": "Influencer Vetting Toolkit", "Description": "Comprehensive tools for vetting and matching influencers.", "Completed": False, "Key": "task_vetting_toolkit", "Status": "❌ Not Completed"},
+        {"Title": "Guide to Influencer Contracts", "Description": "Detailed guidance on creating and managing influencer contracts.", "Completed": False, "Key": "task_influencer_contracts", "Status": "❌ Not Completed"},
+        {"Title": "Content Strategy Workshop", "Description": "Interactive workshop to build a strong content strategy.", "Completed": False, "Key": "task_content_strategy", "Status": "❌ Not Completed"},
+        {"Title": "Full Case Study Library", "Description": "Access a library of full case studies for in-depth learning.", "Completed": False, "Key": "task_case_library", "Status": "❌ Not Completed"},
+        {"Title": "Influencer Legal Toolkit", "Description": "All-in-one legal toolkit for influencer marketing compliance.", "Completed": False, "Key": "task_legal_toolkit", "Status": "❌ Not Completed"},
+        {"Title": "Advanced Influencer Marketing Webinar Series", "Description": "Series of advanced webinars covering influencer marketing strategies.", "Completed": False, "Key": "task_advanced_webinar", "Status": "❌ Not Completed"}
+    ]
+    render_task_table(premium_content)
 
 # Content Calendar Section
 elif section == "Content Calendar":
     st.header("Content Calendar")
-    st.write("Add your Content Calendar code or features here.")
+    st.write("Plan and manage your content efficiently.")
+    start_date = datetime.today()
+    dates = [start_date + timedelta(days=i) for i in range(30)]
+    tasks = [
+        "Beginner’s Guide to Influencer Marketing",
+        "Checklist for Influencer Selection",
+        "Top 10 Red Flags to Avoid",
+        "Content Calendar Template",
+        "Mini Case Study Series",
+        "Influencer Contract Basics",
+        "Webinar: Influencer Marketing 101",
+        "Social Media Compliance Infographic",
+        "Masterclass: Influencer Strategy for Municipal Tourism",
+        "Influencer Vetting Toolkit",
+        "Guide to Influencer Contracts",
+        "Content Strategy Workshop",
+        "Full Case Study Library",
+        "Influencer Legal Toolkit",
+        "Advanced Influencer Marketing Webinar Series"
+    ]
+    task_types = ["Freemium"] * 8 + ["Premium"] * 7
+    calendar_df = pd.DataFrame({"Date": dates[:len(tasks)], "Task": tasks, "Type": task_types})
+    st.dataframe(calendar_df, use_container_width=True)
 
 # Viral Strategies Section
 elif section == "Viral Strategies":
