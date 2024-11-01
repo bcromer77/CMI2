@@ -104,10 +104,46 @@ elif section == "Content Calendar":
     })
     st.dataframe(calendar_df, use_container_width=True)
 
-# Other Sections (Viral Strategies, SEO Strategy, Notes & To-Do, Links & Resources, Course Tutors)
+# Section: Viral Strategies
 elif section == "Viral Strategies":
     st.header("Viral Strategies")
-    st.write("Explore strategies to make your content go viral.")
+    st.write("Explore strategies to make your content go viral and maximize reach.")
+
+    st.subheader("1. Utilize Hashtags Effectively")
+    st.write("""
+    Research trending hashtags related to your industry or content theme. Use a mix of popular and niche hashtags to increase 
+    your content's visibility and engagement. Tools like Hashtagify or All Hashtag can help identify the best hashtags.
+    """)
+
+    st.subheader("2. Collaborate with Micro-Influencers")
+    st.write("""
+    Partner with micro-influencers who have a highly engaged audience. Offering them exclusive freemium content to share 
+    can create buzz and increase your brand's reach. Micro-influencers often have a more authentic connection with their 
+    followers, making them powerful advocates.
+    """)
+
+    st.subheader("3. Run Contests or Giveaways")
+    st.write("""
+    Organize contests or giveaways where followers need to share your content or tag friends to participate. This not only 
+    encourages engagement but also spreads your content organically. Make sure the prize is relevant and enticing to your 
+    target audience.
+    """)
+
+    st.subheader("4. Create Interactive Content")
+    st.write("""
+    Use polls, quizzes, and Q&A sessions on platforms like Instagram Stories and LinkedIn. Interactive content encourages 
+    participation and can boost visibility through social media algorithms. It also provides valuable insights into your 
+    audience’s preferences.
+    """)
+
+    st.subheader("5. Leverage Email Marketing")
+    st.write("""
+    Send engaging email updates to your subscribers about your latest content. Include shareable content and a clear call 
+    to action, encouraging your subscribers to spread the word. Personalize your emails to make the content more relatable 
+    and impactful.
+    """)
+
+    st.write("These strategies, when used together, can amplify your content's reach and make it more likely to go viral. Experiment with different approaches and measure your results to see what works best for your brand.")
 
 elif section == "SEO Strategy":
     st.header("SEO Strategy")
