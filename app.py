@@ -177,3 +177,72 @@ elif section == "Course Tutors":
         with st.expander(f"👤 {tutor['Name']}"):
             st.write(f"**Specialization**: {tutor['Specialization']}")
             st.write(f"**Bio**: {tutor['Bio']}")
+# RippleXp Courses Section
+if section == "Courses":
+    # Add RippleXp Content Here
+    st.title("RippleXp - Transforming Brand Reputation Management")
+    st.write("""
+        ### Why Now?
+        In a world where brands are constantly under the lens, the fear of reputational damage has never been more palpable. 
+        **RippleXp** serves as a calling card, capitalizing on this urgency by empowering brands to understand and manage the 
+        multiple narratives surrounding them online. By leveraging the fear of reputational damage, RippleXp offers a gateway 
+        to RippleXn’s deeper social listening and reputation management services.
+        
+        Our approach is simple but powerful: use storytelling to uncover hidden risks and opportunities, allowing brands to 
+        engage in self-reflection and proactive management. Through dedicated, hands-on courses, RippleXp equips teams with 
+        the insights and skills they need to navigate today’s high-stakes media landscape. **The Trojan horse?** RippleXp 
+        positions brands to embrace RippleXn’s full suite of social listening tools for ongoing protection.
+    """)
+    st.write("---")
+
+    # RippleXp Course Navigation
+    ripple_section = st.radio("Course Navigation", [
+        "Overview", 
+        "The RippleXp Approach", 
+        "Target Audiences", 
+        "Entry-Level Products", 
+        "Advanced Options", 
+        "Commercialization & Off-the-Shelf Products", 
+        "Crisis Identification Stages", 
+        "Course Assessment"
+    ])
+
+    # Content for Each RippleXp Subsection
+    if ripple_section == "Overview":
+        st.header("Overview: RippleXp as a Top-of-Funnel Approach")
+        st.write("RippleXp acts as a strategic top-of-funnel entry point for RippleXn’s core offerings...")
+
+    elif ripple_section == "The RippleXp Approach":
+        st.header("The RippleXp Approach to Reputation Management")
+        st.write("Reputation is a mosaic, composed of hundreds of individual stories...")
+
+    elif ripple_section == "Target Audiences":
+        st.header("Target Audiences - Four Key Areas of Focus")
+        st.write("RippleXp courses are tailored to address the different stages of brand audience engagement...")
+
+    elif ripple_section == "Entry-Level Products":
+        st.header("Entry-Level Products for Customer Acquisition")
+        st.write("These offerings serve as introductory tools to bring clients into the RippleXp ecosystem...")
+
+    elif ripple_section == "Advanced Options":
+        st.header("Advanced Options for Engaging Sophisticated Buyers")
+        st.write("For brands prepared to take the next step, RippleXp offers advanced courses...")
+
+    elif ripple_section == "Commercialization & Off-the-Shelf Products":
+        st.header("Commercialization & Off-the-Shelf Products")
+        st.write("RippleXp offers modular, off-the-shelf products that cater to brands...")
+
+    elif ripple_section == "Crisis Identification Stages":
+        st.header("Crisis Identification Stages - From Fear to Proactivity")
+        st.write("Each RippleXp course addresses a critical stage in crisis management...")
+
+    elif ripple_section == "Course Assessment":
+        st.header("Course Assessment - Customized Recommendations")
+        st.write("Our assessment tool helps clients identify the most relevant RippleXp courses...")
+
+    # Footer CTA for RippleXp Courses
+    st.write("---")
+    st.write("Ready to secure your brand’s reputation? Start your RippleXp journey and prepare for RippleXn’s comprehensive monitoring services.")
+    st.button("Contact Us for a Free Consultation")
+
+# Keep the rest of your existing sections for Freemium Content, Premium Content, etc.
