@@ -22,20 +22,15 @@ section = st.sidebar.radio("Go to:", [
     "Course Tutors"
 ])
 
-# Helper function to render tasks in a table format
+# Function to render tasks with checkboxes and update their status
 def render_task_table(task_list):
-    # Create a DataFrame for tasks
-    df = pd.DataFrame(task_list)
-    df["Status"] = df.apply(lambda row: "✔️ Completed" if row["Completed"] else "❌ Not Completed", axis=1)
-    
-    # Convert checkboxes into a list for rendering in a table
-    checkboxes = [st.checkbox(task["Title"], value=task["Completed"], key=task["Key"]) for task in task_list]
-    
-    # Update the "Completed" status based on checkbox values
-    for i, task in enumerate(task_list):
-        task["Completed"] = checkboxes[i]
+    # Iterate through the tasks and create checkboxes
+    for task in task_list:
+        task["Completed"] = st.checkbox(task["Title"], value=task["Completed"], key=task["Key"])
+        task["Status"] = "✔️ Completed" if task["Completed"] else "❌ Not Completed"
 
-    # Display the DataFrame in a cleaner format
+    # Convert task list to DataFrame and display as a table
+    df = pd.DataFrame(task_list)
     st.table(df[["Title", "Description", "Status"]])
 
 # Content Ideas Section
@@ -45,14 +40,14 @@ if section == "Content Ideas":
 
     # List of content ideas
     content_ideas = [
-        {"Title": "Beginner’s Guide to Influencer Marketing", "Description": "A simple guide to understanding influencer marketing for tourism.", "Completed": False, "Key": "task_guide"},
-        {"Title": "Checklist for Influencer Selection", "Description": "A detailed checklist to help choose the right influencers.", "Completed": False, "Key": "task_checklist"},
-        {"Title": "Top 10 Red Flags to Avoid", "Description": "Highlights common mistakes when working with influencers.", "Completed": False, "Key": "task_red_flags"},
-        {"Title": "Content Calendar Template", "Description": "A downloadable content calendar template for planning influencer campaigns.", "Completed": False, "Key": "task_calendar"},
-        {"Title": "Mini Case Study Series", "Description": "Short success stories of effective influencer marketing campaigns.", "Completed": False, "Key": "task_case_studies"},
-        {"Title": "Influencer Contract Basics", "Description": "A guide explaining the essentials of influencer contracts.", "Completed": False, "Key": "task_contract_basics"},
-        {"Title": "Webinar: Influencer Marketing 101", "Description": "A free webinar covering the basics of influencer marketing.", "Completed": False, "Key": "task_webinar"},
-        {"Title": "Social Media Compliance Infographic", "Description": "An easy-to-understand infographic on social media compliance rules.", "Completed": False, "Key": "task_infographic"}
+        {"Title": "Beginner’s Guide to Influencer Marketing", "Description": "A simple guide to understanding influencer marketing for tourism.", "Completed": False, "Key": "task_guide", "Status": "❌ Not Completed"},
+        {"Title": "Checklist for Influencer Selection", "Description": "A detailed checklist to help choose the right influencers.", "Completed": False, "Key": "task_checklist", "Status": "❌ Not Completed"},
+        {"Title": "Top 10 Red Flags to Avoid", "Description": "Highlights common mistakes when working with influencers.", "Completed": False, "Key": "task_red_flags", "Status": "❌ Not Completed"},
+        {"Title": "Content Calendar Template", "Description": "A downloadable content calendar template for planning influencer campaigns.", "Completed": False, "Key": "task_calendar", "Status": "❌ Not Completed"},
+        {"Title": "Mini Case Study Series", "Description": "Short success stories of effective influencer marketing campaigns.", "Completed": False, "Key": "task_case_studies", "Status": "❌ Not Completed"},
+        {"Title": "Influencer Contract Basics", "Description": "A guide explaining the essentials of influencer contracts.", "Completed": False, "Key": "task_contract_basics", "Status": "❌ Not Completed"},
+        {"Title": "Webinar: Influencer Marketing 101", "Description": "A free webinar covering the basics of influencer marketing.", "Completed": False, "Key": "task_webinar", "Status": "❌ Not Completed"},
+        {"Title": "Social Media Compliance Infographic", "Description": "An easy-to-understand infographic on social media compliance rules.", "Completed": False, "Key": "task_infographic", "Status": "❌ Not Completed"}
     ]
 
     render_task_table(content_ideas)
@@ -64,13 +59,13 @@ elif section == "Premium Content":
 
     # List of premium content
     premium_content = [
-        {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Description": "In-depth training on crafting effective influencer strategies.", "Completed": False, "Key": "task_masterclass"},
-        {"Title": "Influencer Vetting Toolkit", "Description": "Comprehensive tools for vetting and matching influencers.", "Completed": False, "Key": "task_vetting_toolkit"},
-        {"Title": "Guide to Influencer Contracts", "Description": "Detailed guidance on creating and managing influencer contracts.", "Completed": False, "Key": "task_influencer_contracts"},
-        {"Title": "Content Strategy Workshop", "Description": "Interactive workshop to build a strong content strategy.", "Completed": False, "Key": "task_content_strategy"},
-        {"Title": "Full Case Study Library", "Description": "Access a library of full case studies for in-depth learning.", "Completed": False, "Key": "task_case_library"},
-        {"Title": "Influencer Legal Toolkit", "Description": "All-in-one legal toolkit for influencer marketing compliance.", "Completed": False, "Key": "task_legal_toolkit"},
-        {"Title": "Advanced Influencer Marketing Webinar Series", "Description": "Series of advanced webinars covering influencer marketing strategies.", "Completed": False, "Key": "task_advanced_webinar"}
+        {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Description": "In-depth training on crafting effective influencer strategies.", "Completed": False, "Key": "task_masterclass", "Status": "❌ Not Completed"},
+        {"Title": "Influencer Vetting Toolkit", "Description": "Comprehensive tools for vetting and matching influencers.", "Completed": False, "Key": "task_vetting_toolkit", "Status": "❌ Not Completed"},
+        {"Title": "Guide to Influencer Contracts", "Description": "Detailed guidance on creating and managing influencer contracts.", "Completed": False, "Key": "task_influencer_contracts", "Status": "❌ Not Completed"},
+        {"Title": "Content Strategy Workshop", "Description": "Interactive workshop to build a strong content strategy.", "Completed": False, "Key": "task_content_strategy", "Status": "❌ Not Completed"},
+        {"Title": "Full Case Study Library", "Description": "Access a library of full case studies for in-depth learning.", "Completed": False, "Key": "task_case_library", "Status": "❌ Not Completed"},
+        {"Title": "Influencer Legal Toolkit", "Description": "All-in-one legal toolkit for influencer marketing compliance.", "Completed": False, "Key": "task_legal_toolkit", "Status": "❌ Not Completed"},
+        {"Title": "Advanced Influencer Marketing Webinar Series", "Description": "Series of advanced webinars covering influencer marketing strategies.", "Completed": False, "Key": "task_advanced_webinar", "Status": "❌ Not Completed"}
     ]
 
     render_task_table(premium_content)
@@ -113,22 +108,18 @@ elif section == "Content Calendar":
 elif section == "Viral Strategies":
     st.header("Viral Strategies")
     st.write("Explore strategies to make your content go viral.")
-    # (Viral strategies content)
 
 elif section == "SEO Strategy":
     st.header("SEO Strategy")
     st.write("Plan your SEO strategy to maximize reach.")
-    # (SEO strategy content)
 
 elif section == "Notes & To-Do":
     st.header("Notes & To-Do")
     st.write("Keep track of your notes and tasks.")
-    # (Notes & To-Do content)
 
 elif section == "Links & Resources":
     st.header("Links & Resources")
     st.write("Access useful links and resources for influencer marketing.")
-    # (Links & Resources content)
 
 elif section == "Course Tutors":
     st.header("Course Tutors")
