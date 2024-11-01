@@ -127,8 +127,7 @@ elif section == "Course Tutors":
     to use storytelling as a tool for influence, helping them overcome communication barriers like glossophobia. 
     With a focus on creating a psychologically safe environment, Kay’s sessions emphasize practical learning, enhancing 
     voice, body language, and leadership communication. Her work is transformative, amplifying confidence and audience engagement.
-    """)
-elif section == "Course Tutors":
+    """)elif section == "Course Tutors":
     st.header("Course Tutors")
     st.write("Learn from our expert speakers, each specializing in a unique aspect of brand reputation and storytelling:")
     st.subheader("Building Confidence")
@@ -140,5 +139,4 @@ elif section == "Course Tutors":
     st.subheader("Rhetoric")
     st.write("**Instructor:** Brian Jenner")
     st.write("Brian Jenner specializes in the power of rhetoric and persuasive language.")
-
 
