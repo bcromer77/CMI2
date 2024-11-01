@@ -137,6 +137,8 @@ if section == "Content Calendar":
     # Generate a calendar starting from November 4th for 30 days
     start_date = datetime(2024, 11, 4)
     dates = [start_date + timedelta(days=i) for i in range(30)]
+
+    # Ensure calendar_tasks has exactly 30 items
     calendar_tasks = [
         "Beginner’s Guide to Influencer Marketing",
         "Checklist for Influencer Selection",
@@ -146,8 +148,18 @@ if section == "Content Calendar":
         "Influencer Contract Basics",
         "Webinar: Influencer Marketing 101",
         "Social Media Compliance Infographic"
-    ] + [""] * (30 - len(calendar_tasks))
+    ]
+
+    # Extend the calendar_tasks list to 30 elements if it's shorter
+    calendar_tasks.extend([""] * (30 - len(calendar_tasks)))
+
+    # Create the DataFrame
     calendar_df = pd.DataFrame({"Date": dates, "Task": calendar_tasks})
+    
+    # Display the content calendar using a simple dataframe
+    st.dataframe(calendar_df, use_container_width=True)
+    st.write("Note: You can update the tasks manually in your personal copy.")
+
     
     # Display the content calendar using a simple dataframe
     st.dataframe(calendar_df, use_container_width=True)
