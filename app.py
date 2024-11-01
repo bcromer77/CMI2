@@ -188,4 +188,11 @@ elif section == "Courses":
 
     # Course Offerings
     courses = [
-        {"Title": "Reputation - RippleXp", "Description": "Top-of-funnel course for managing
+        {"Title": "Reputation - RippleXp", "Description": "Top-of-funnel course for managing brand reputation through storytelling."},
+        {"Title": "Influencer Marketing Masterclass", "Description": "Advanced strategies for building long-term relationships and measuring ROI."}
+    ]
+    
+    # Loop to display course information
+    for course in courses:
+        with st.expander(f"📘 {course['Title']}"):
+            st.write(course["Description"])
