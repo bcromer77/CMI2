@@ -244,5 +244,116 @@ if section == "Courses":
     st.write("---")
     st.write("Ready to secure your brand’s reputation? Start your RippleXp journey and prepare for RippleXn’s comprehensive monitoring services.")
     st.button("Contact Us for a Free Consultation")
+# Courses Section
+elif section == "Courses":
+    st.header("Explore Our Courses")
+    st.write("Our courses are designed to take you from foundational concepts to advanced influencer marketing strategies.")
+    st.markdown("---")
 
+    # Course Navigation
+    course_section = st.radio("Course Navigation", [
+        "Overview",
+        "The RippleXp Approach",
+        "Target Audiences",
+        "Entry-Level Products",
+        "Advanced Options",
+        "Commercialization & Off-the-Shelf Products",
+        "Crisis Identification Stages"
+    ])
+
+    # Content for Each Subsection
+    if course_section == "Overview":
+        st.header("Overview: RippleXp as a Top-of-Funnel Approach")
+        st.write("""
+            RippleXp acts as a strategic top-of-funnel entry point for RippleXn's core offerings. By engaging clients through storytelling 
+            and reputation management courses, we position RippleXn's deeper social listening services as the logical next step.
+        """)
+        st.subheader("Key Objectives:")
+        st.write("""
+            - **Leverage Fear of Reputational Damage**: RippleXp addresses brand vulnerability head-on, sparking interest through actionable insights.
+            - **Drive Discovery through Storytelling**: Courses are structured to teach clients the art of storytelling while subtly preparing them for RippleXn.
+            - **Facilitate Smooth Transitions**: Graduates of RippleXp's courses are primed for more advanced reputation management services.
+        """)
+
+    elif course_section == "The RippleXp Approach":
+        st.header("The RippleXp Approach to Reputation Management")
+        st.write("""
+            Reputation is a mosaic, composed of hundreds of individual stories that, together, create a brand's narrative. RippleXp's courses guide 
+            clients through the storytelling process, uncovering hidden risks and opportunities that align with RippleXn's proactive listening 
+            tools.
+        """)
+        st.subheader("Why Storytelling?")
+        st.write("""
+            Storytelling is not just a creative exercise; it's a strategic tool that allows brands to manage their narratives with intention.
+            RippleXp helps brands develop the storytelling skills to navigate and control their reputation, leading naturally to the need 
+            for RippleXn's advanced social listening solutions.
+        """)
+
+    elif course_section == "Target Audiences":
+        st.header("Target Audiences - Four Key Areas of Focus")
+        st.write("""
+            RippleXp courses are tailored to address the different stages of brand audience engagement:
+            
+            - **No Audience Yet**: Brands looking to attract listeners and engage emerging trends.
+            - **Existing Audience**: Brands with a current audience but lacking insight into competitive influences.
+            - **Lost Audience (Crisis Management)**: Brands needing real-time recovery tactics.
+            - **Other Voices Speaking**: Brands with influencers or advocates requiring training in brand representation.
+        """)
+        st.write("---")
+
+    elif course_section == "Entry-Level Products":
+        st.header("Entry-Level Products for Customer Acquisition")
+        st.write("""
+            These offerings serve as introductory tools to bring clients into the RippleXp ecosystem while priming them for RippleXn:
+            
+            - **$49 FTC/SEC Disclosure Training**: Ensures influencers meet regulatory standards, reducing risk.
+            - **$75 Trend Analysis**: 100 hours of curated insights, highlighting key trends.
+            - **$199 Risk & Strategy Support**: Choose between an influencer background check or a custom listening strategy.
+        """)
+        st.subheader("Course Delivery Options")
+        st.write("""
+            - **Half-Day Workshop**: Brief training sessions focused on immediate insights and regulatory basics.
+        """)
+
+    elif course_section == "Advanced Options":
+        st.header("Advanced Options for Engaging Sophisticated Buyers")
+        st.write("""
+            For brands prepared to take the next step, RippleXp offers advanced courses that lead into RippleXn's ongoing monitoring services:
+            
+            - **Storytelling Courses**: Develop narrative skills for brand control.
+            - **Social Video Alerts**: Real-time insights identifying emerging risks like greenwashing.
+        """)
+        st.subheader("Course Delivery Options")
+        st.write("""
+            - **Full-Day Workshop**: Intensive storytelling and brand reputation sessions.
+            - **3-Day Immersive**: In-depth courses with hands-on application and strategy development.
+        """)
+
+    elif course_section == "Commercialization & Off-the-Shelf Products":
+        st.header("Commercialization & Off-the-Shelf Products")
+        st.write("""
+            RippleXp offers modular, off-the-shelf products that cater to brands at various stages of crisis management and 
+            audience engagement:
+            
+            - **Crisis Identification Products**: Scalable solutions that highlight brand vulnerabilities.
+            - **Audience Insight Tools**: Pre-packaged courses that guide brands through common pitfalls.
+            - **Advanced Monitoring Solutions**: RippleXn's full-service offerings for real-time brand listening.
+        """)
+
+    elif course_section == "Crisis Identification Stages":
+        st.header("Crisis Identification Stages - From Fear to Proactivity")
+        st.write("""
+            Each RippleXp course addresses a critical stage in crisis management, from early detection to response. 
+            We position RippleXp courses as essential tools for understanding where and how reputational threats emerge.
+        """)
+        st.write("""
+            - **Stage 1**: Identify reputation risks.
+            - **Stage 2**: Address complications and educate through storytelling.
+            - **Stage 3**: Engage ongoing RippleXn monitoring services for continued reputation management.
+        """)
+
+# Footer (optional)
+st.write("---")
+st.write("Ready to transform your marketing strategy? Start your RippleXp journey today.")
+st.button("Contact Us for a Free Consultation")
 # Keep the rest of your existing sections for Freemium Content, Premium Content, etc.
