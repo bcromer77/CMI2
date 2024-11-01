@@ -1,6 +1,4 @@
 import streamlit as st
-import pandas as pd
-from datetime import datetime, timedelta
 
 # Page Configuration
 st.set_page_config(page_title="CMI Content Management Dashboard", layout="wide")
@@ -32,126 +30,52 @@ st.sidebar.markdown("[Webinar: Influencer Marketing 101](#webinar-influencer-mar
 st.sidebar.markdown("[Social Media Compliance Infographic](#social-media-compliance-infographic)", unsafe_allow_html=True)
 
 # Main Content Sections
-if section == "Content Ideas":
-    st.header("Content Ideas")
-    st.write("Here you can manage your content ideas with task statuses.")
-
-    # Example Freemium Content List
-    freemium_content = [
-        {"Title": "Beginner’s Guide to Influencer Marketing", "Status": False},
-        {"Title": "Checklist for Influencer Selection", "Status": False},
-        {"Title": "Top 10 Red Flags to Avoid", "Status": False},
-        {"Title": "Content Calendar Template", "Status": False},
-        {"Title": "Mini Case Study Series", "Status": False},
-        {"Title": "Influencer Contract Basics", "Status": False},
-        {"Title": "Webinar: Influencer Marketing 101", "Status": False},
-        {"Title": "Social Media Compliance Infographic", "Status": False},
-    ]
-
-    # Display content list with checkboxes
-    for item in freemium_content:
-        item["Status"] = st.checkbox(item["Title"], value=item["Status"])
-        st.write(f"Status: {'✔️ Completed' if item['Status'] else '❌ Not Completed'}")
-        st.markdown("---")
-
-if section == "Premium Content":
-    st.header("Premium Content")
-    st.write("Manage your premium content strategies here.")
-
-    # Example Premium Content List
-    premium_content = [
-        {"Title": "Masterclass: Influencer Strategy for Municipal Tourism", "Status": False},
-        {"Title": "Influencer Vetting Toolkit", "Status": False},
-        {"Title": "Guide to Influencer Contracts", "Status": False},
-        {"Title": "Content Strategy Workshop", "Status": False},
-        {"Title": "Full Case Study Library", "Status": False},
-        {"Title": "Influencer Legal Toolkit", "Status": False},
-        {"Title": "Advanced Influencer Marketing Webinar Series", "Status": False},
-    ]
-
-    # Display content list with checkboxes
-    for item in premium_content:
-        item["Status"] = st.checkbox(item["Title"], value=item["Status"])
-        st.write(f"Status: {'✔️ Completed' if item['Status'] else '❌ Not Completed'}")
-        st.markdown("---")
-
-if section == "Content Calendar":
-    st.header("Content Calendar")
-    st.write("Plan and manage your content with our content calendar.")
-
-    # Generate a calendar starting from November 4th for 30 days
-    start_date = pd.Timestamp("2024-11-04")
-    dates = [start_date + pd.Timedelta(days=i) for i in range(30)]
-    calendar_tasks = [
-        "Beginner’s Guide to Influencer Marketing",
-        "Checklist for Influencer Selection",
-        "Top 10 Red Flags to Avoid",
-        "Content Calendar Template",
-        "Mini Case Study Series",
-        "Influencer Contract Basics",
-        "Webinar: Influencer Marketing 101",
-        "Social Media Compliance Infographic",
-        "Masterclass: Influencer Strategy for Municipal Tourism",
-        "Influencer Vetting Toolkit",
-        "Guide to Influencer Contracts",
-        "Content Strategy Workshop",
-        "Full Case Study Library",
-        "Influencer Legal Toolkit",
-        "Advanced Influencer Marketing Webinar Series"
-    ]
-    types = ["Freemium"] * 8 + ["Premium"] * 7
-    calendar_df = pd.DataFrame({"Date": dates[:len(calendar_tasks)], "Task": calendar_tasks, "Type": types})
-
-    st.dataframe(calendar_df, use_container_width=True)
-    st.write("Note: You can update the tasks manually in your personal copy.")
-
-if section == "Viral Strategies":
-    st.header("Strategies to Make Content Go Viral")
-    st.write("1. **Utilize Hashtags**: Research trending hashtags for influencer marketing.")
-    st.write("2. **Collaborate with Micro-Influencers**: Offer them your freemium content to share with their audience.")
-    st.write("3. **Run Contests or Giveaways**: Encourage followers to share your content for a chance to win a premium resource.")
-    st.write("4. **Create Interactive Content**: Use polls and quizzes on Instagram Stories and LinkedIn to engage your audience.")
-    st.write("5. **Email Marketing**: Send updates to your subscribers about new content and encourage them to share with their network.")
-
-if section == "SEO Strategy":
-    st.header("SEO Strategy")
-    st.write("Plan your SEO strategy to maximize reach.")
-
-if section == "Notes & To-Do":
-    st.header("Notes & To-Do")
-    st.write("Keep track of your notes and tasks.")
-
-if section == "Links & Resources":
-    st.header("Links & Resources")
-    st.write("Access useful links and resources for influencer marketing.")
-
-# New Course Tutors Section
 if section == "Course Tutors":
     st.header("Course Tutors")
     st.write("Learn from our expert speakers:")
-    st.write("**Building Confidence** - Kay Munday")
-    st.write("**Storytelling Narrative** - Dr. James McCabe")
-    st.write("**Rhetoric** - Brian Jenner")
+    
+    # Building Confidence - Kay Munday
+    st.subheader("Building Confidence")
+    st.write("**Instructor**: Kay Munday")
+    st.write("Kay specializes in helping professionals build confidence and presence in high-stakes situations.")
+    
+    # Storytelling Narrative - Dr. James McCabe
+    st.subheader("Storytelling Narrative")
+    st.write("**Instructor**: Dr. James McCabe")
+    st.write("""
+        Dr. McCabe explores the art of storytelling as a strategic tool. Dive deep into the world of narratives and 
+        discover how to craft stories that control and elevate your brand reputation.
+        
+        **RippleXp - Transforming Brand Reputation Management**
+        
+        ### Why Now?
+        In a world where brands are constantly under the lens, the fear of reputational damage has never been more palpable. 
+        **RippleXp** serves as a calling card, capitalizing on this urgency by empowering brands to understand and manage the 
+        multiple narratives surrounding them online.
+        
+        Our approach is simple but powerful: use storytelling to uncover hidden risks and opportunities. Through dedicated 
+        courses, RippleXp equips teams with insights and skills for proactive management, paving the way for RippleXn’s tools.
+        
+        **Key Sections of Dr. McCabe's Course**:
+        - **Overview**: RippleXp as a top-of-funnel approach.
+        - **Approach**: Storytelling for reputation management.
+        - **Target Audiences**: Tailored solutions for varied audience stages.
+        - **Entry-Level Products**: Easy entry into RippleXp’s ecosystem.
+        - **Advanced Options**: Engaging sophisticated buyers with comprehensive courses.
+        - **Crisis Identification Stages**: From detecting risks to proactive management.
+        - **Course Assessment**: Customized recommendations for continued learning.
+        
+        **Ready to elevate your brand’s story?** Learn how RippleXp can transform your reputation strategy.
+    """)
+    
+    # Rhetoric - Brian Jenner
+    st.subheader("Rhetoric")
+    st.write("**Instructor**: Brian Jenner")
+    st.write("""
+        Brian delves into the power of rhetoric, teaching techniques to persuade and influence effectively in the corporate world.
+    """)
 
-# Aesthetic Enhancements
-# Use custom colors and fonts
-st.markdown(
-    """
-    <style>
-    .main {
-        background-color: #f8f9fa;
-        color: #343a40;
-        font-family: "Arial", sans-serif;
-    }
-    .sidebar .sidebar-content {
-        background-color: #343a40;
-        color: white;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
+# Add remaining sections as necessary...
 
 
 
